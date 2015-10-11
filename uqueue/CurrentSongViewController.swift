@@ -9,10 +9,12 @@
 import UIKit
 import MediaPlayer
 
-class CurrentSongViewController: UIViewController {
+class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelegate {
 
     let myPlayer = MPMusicPlayerController.systemMusicPlayer()
+    let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
     var currentSong:MPMediaItem!
+    var currentQueue:MPMediaItemCollection!
     
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
@@ -22,19 +24,20 @@ class CurrentSongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let mediaItems = MPMediaQuery.songsQuery().items
         
-        let query = MPMediaQuery.songsQuery()
-        let predicate = MPMediaPropertyPredicate(value: "Music", forProperty: MPMediaItemPropertyMediaType)
-        query.filterPredicates = NSSet(object: predicate)
-            as? Set<MPMediaPredicate>
+        myPicker.delegate = self
+        myPicker.allowsPickingMultipleItems = false
         
-        let mediaCollection = MPMediaItemCollection(items: mediaItems!)
+        // This code when would just set the queue to be the entire music library
+//        let mediaItems = MPMediaQuery.songsQuery().items
+//        let query = MPMediaQuery.songsQuery()
+//        let predicate = MPMediaPropertyPredicate(value: "Music", forProperty: MPMediaItemPropertyMediaType)
+//        query.filterPredicates = NSSet(object: predicate)
+//            as? Set<MPMediaPredicate>
+//        let mediaCollection = MPMediaItemCollection(items: mediaItems!)
+//        myPlayer.setQueueWithItemCollection(mediaCollection)
         
-        myPlayer.setQueueWithItemCollection(mediaCollection)
-        
-        myPlayer.play()
+        selectSong()
         currentSong = myPlayer.nowPlayingItem
         
         //Timer that calls updateCurrentInfo every 0.1 seconds
@@ -46,6 +49,29 @@ class CurrentSongViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func chooseButtonPressed() {
+        selectSong()
+    }
+    
+    // Displays Media Picker
+    func selectSong() {
+        self.presentViewController(myPicker, animated: true, completion: nil)
+    }
+    
+    // Called when an item is chosen in Media Picker
+    func mediaPicker(myPicker: MPMediaPickerController,
+        didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+            myPlayer.setQueueWithItemCollection(mediaItemCollection)
+            myPlayer.play()
+            myPicker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Called to cancel the Media Picker 
+    func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
+        mediaPicker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Keeps the displayed info up to date
     func updateCurrentInfo() {
         currentSong = myPlayer.nowPlayingItem
         trackTitleLabel.text = currentSong?.title
@@ -53,6 +79,8 @@ class CurrentSongViewController: UIViewController {
         artistNameLabel.text = currentSong?.artist
         albumImage.image = currentSong?.artwork?.imageWithSize(CGSize(width: 150,height: 150))
     }
+    
+    
 
     /*
     // MARK: - Navigation
