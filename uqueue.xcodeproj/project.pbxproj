@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668501BBD741900B7E1A1 /* AppDelegate.swift */; };
 		E76668531BBD741900B7E1A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668521BBD741900B7E1A1 /* ViewController.swift */; };
 		E76668561BBD741900B7E1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76668541BBD741900B7E1A1 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSongViewController.swift; sourceTree = "<group>"; };
 		E766684D1BBD741900B7E1A1 /* uqueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uqueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76668501BBD741900B7E1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E76668521BBD741900B7E1A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E76668521BBD741900B7E1A1 /* ViewController.swift */,
+				E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */,
 				E76668541BBD741900B7E1A1 /* Main.storyboard */,
 				E76668591BBD741900B7E1A1 /* LaunchScreen.storyboard */,
 				E76668571BBD741900B7E1A1 /* Assets.xcassets */,
@@ -192,6 +195,7 @@
 				TargetAttributes = {
 					E766684C1BBD741900B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = SB59U4RRP6;
 					};
 					E76668601BBD741A00B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -257,6 +261,7 @@
 			files = (
 				E76668531BBD741900B7E1A1 /* ViewController.swift in Sources */,
 				E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */,
+				E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,10 +403,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -409,10 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -483,6 +494,7 @@
 				E76668771BBD741A00B7E1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E76668781BBD741A00B7E1A1 /* Build configuration list for PBXNativeTarget "uqueueTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +503,7 @@
 				E766687A1BBD741A00B7E1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E766687B1BBD741A00B7E1A1 /* Build configuration list for PBXNativeTarget "uqueueUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +512,7 @@
 				E766687D1BBD741A00B7E1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
