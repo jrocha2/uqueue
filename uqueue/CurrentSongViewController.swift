@@ -14,7 +14,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     let myPlayer = MPMusicPlayerController.systemMusicPlayer()
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
     var currentSong:MPMediaItem?
-    var currentQueue:MPMediaItemCollection?
+    var currentQueue:[QueuedSong]?
     
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
@@ -61,31 +61,37 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     // Pops front song off of the queue
     func popQueue() {
         var resultArray = [MPMediaItem]()
-        for item in currentQueue!.items as [MPMediaItem] {
-            resultArray.append(item)
+        var newQueue = [QueuedSong]()
+        for item in currentQueue! {
+            resultArray.append(item.media)
+            newQueue.append(item)
         }
         if (resultArray.count > 0) {
             resultArray.removeFirst()
+            newQueue.removeFirst()
         }
-        currentQueue = MPMediaItemCollection(items: resultArray)
-        myPlayer.setQueueWithItemCollection(currentQueue!)
+        currentQueue = newQueue
+        myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: resultArray))
     }
     
     // Called when an item is chosen in Media Picker
     func mediaPicker(myPicker: MPMediaPickerController,
         didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
             var resultArray = [MPMediaItem]()
+            var newQueue = [QueuedSong]()
             if currentQueue?.count > 0 {
-                for item in currentQueue!.items as [MPMediaItem]{
-                    resultArray.append(item)
+                for item in currentQueue!{
+                    resultArray.append(item.media)
+                    newQueue.append(item)
                 }
             }
             for item in mediaItemCollection.items as [MPMediaItem] {
                 resultArray.append(item)
+                newQueue.append(QueuedSong(media: item))
             }
-            let resultQueue = MPMediaItemCollection(items: resultArray)
-            myPlayer.setQueueWithItemCollection(resultQueue)
-            currentQueue = resultQueue
+            myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: resultArray))
+
+            currentQueue = newQueue
        
             currentSong = myPlayer.nowPlayingItem
             myPicker.dismissViewControllerAnimated(true, completion: nil)
