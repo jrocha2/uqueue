@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Q0s-3C-AAc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jgo-Tu-hab">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="GcV-rL-NKT">
+            <objects>
+                <navigationController id="Jgo-Tu-hab" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Fd-R9-tKd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Q0s-3C-AAc" kind="relationship" relationship="rootViewController" id="Qlv-4C-5cz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ny4-Ph-AR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="-573"/>
+        </scene>
         <!--Current Song View Controller-->
         <scene sceneID="osO-5y-iA3">
             <objects>
@@ -17,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="drN-vN-b8O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drN-vN-b8O">
                                 <rect key="frame" x="136" y="59" width="329" height="280"/>
                                 <animations/>
                                 <constraints>
@@ -25,62 +43,94 @@
                                     <constraint firstAttribute="width" constant="329" id="UYp-vH-jNy"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-b0-hPJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-b0-hPJ">
                                 <rect key="frame" x="185" y="368" width="230" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-Ps-Q9H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-Ps-Q9H">
                                 <rect key="frame" x="185" y="397" width="230" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-iD-2ka">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-iD-2ka">
                                 <rect key="frame" x="185" y="426" width="230" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94e-mx-wxj">
-                                <rect key="frame" x="248" y="540" width="104" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-b3-wRU">
+                                <rect key="frame" x="20" y="550" width="83" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Choose a Song"/>
+                                <state key="normal" title="View Queue"/>
+                                <connections>
+                                    <segue destination="1V2-1G-rFh" kind="show" identifier="queueSegue" id="CBN-b5-S2a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
+                                <rect key="frame" x="381" y="471" width="60" height="60"/>
+                                <animations/>
+                                <state key="normal" image="nexticon"/>
+                                <connections>
+                                    <action selector="nextButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="jKi-VD-4Rr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94e-mx-wxj">
+                                <rect key="frame" x="495" y="550" width="85" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Add Song(s)"/>
                                 <connections>
                                     <action selector="chooseButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="z3z-KG-1gT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
-                                <rect key="frame" x="486" y="540" width="32" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
+                                <rect key="frame" x="265" y="466" width="70" height="70"/>
                                 <animations/>
-                                <state key="normal" title="Next"/>
+                                <state key="normal" image="pauseicon"/>
                                 <connections>
-                                    <action selector="nextButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="jKi-VD-4Rr"/>
+                                    <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG2-xT-SKm">
+                                <rect key="frame" x="162" y="471" width="60" height="60"/>
+                                <animations/>
+                                <state key="normal" image="previousicon"/>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Qc-tg-ECM" secondAttribute="trailing" constant="62" id="1N3-wW-LdV"/>
+                            <constraint firstItem="bb0-Ps-Q9H" firstAttribute="top" secondItem="4w5-b0-hPJ" secondAttribute="bottom" constant="8" id="5gN-9S-gGu"/>
+                            <constraint firstItem="TN4-yW-pkx" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="D4q-xM-puK"/>
+                            <constraint firstItem="TN4-yW-pkx" firstAttribute="top" secondItem="WNP-iD-2ka" secondAttribute="bottom" constant="19" id="Dl2-xu-6kB"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ZgS-b3-wRU" secondAttribute="leading" id="Gch-TQ-N9l"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="HZT-v8-nJH"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="IPU-38-ybZ"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="top" secondItem="Sxp-Wm-mTO" secondAttribute="bottom" constant="39" id="MZe-eR-rIq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="94e-mx-wxj" secondAttribute="trailing" id="Og0-Ba-MLT"/>
                             <constraint firstItem="4w5-b0-hPJ" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="OnI-d5-Fx4"/>
-                            <constraint firstItem="94e-mx-wxj" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="TtA-Vd-n12"/>
-                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="94e-mx-wxj" secondAttribute="bottom" constant="30" id="mKQ-Uj-xn3"/>
+                            <constraint firstItem="TN4-yW-pkx" firstAttribute="leading" secondItem="cG2-xT-SKm" secondAttribute="trailing" constant="43" id="QS3-6r-f61"/>
+                            <constraint firstItem="WNP-iD-2ka" firstAttribute="top" secondItem="bb0-Ps-Q9H" secondAttribute="bottom" constant="8" id="R9Y-bc-2Ae"/>
+                            <constraint firstItem="1Qc-tg-ECM" firstAttribute="top" secondItem="drN-vN-b8O" secondAttribute="bottom" constant="132" id="Xdb-4X-Nb5"/>
+                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="ZgS-b3-wRU" secondAttribute="bottom" constant="20" id="hRM-hV-iBr"/>
+                            <constraint firstItem="4w5-b0-hPJ" firstAttribute="top" secondItem="drN-vN-b8O" secondAttribute="bottom" constant="29" id="lxm-pV-RmR"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="nd1-St-k9Z"/>
-                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="1Qc-tg-ECM" secondAttribute="bottom" constant="30" id="sZG-h5-tzC"/>
+                            <constraint firstItem="cG2-xT-SKm" firstAttribute="top" secondItem="drN-vN-b8O" secondAttribute="bottom" constant="132" id="rDX-1d-0xx"/>
+                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="94e-mx-wxj" secondAttribute="bottom" constant="20" id="tim-rB-htm"/>
+                            <constraint firstItem="1Qc-tg-ECM" firstAttribute="leading" secondItem="TN4-yW-pkx" secondAttribute="trailing" constant="46" id="y2y-AH-W3m"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zg5-Mp-yRq"/>
                     <connections>
                         <outlet property="albumImage" destination="drN-vN-b8O" id="SgY-dU-3NQ"/>
                         <outlet property="albumTitleLabel" destination="bb0-Ps-Q9H" id="I9f-vR-H7G"/>
                         <outlet property="artistNameLabel" destination="WNP-iD-2ka" id="Ytf-Lh-PY7"/>
+                        <outlet property="playAndPauseButton" destination="TN4-yW-pkx" id="VYJ-Yp-m7L"/>
                         <outlet property="trackTitleLabel" destination="4w5-b0-hPJ" id="N4Q-FU-WGW"/>
                     </connections>
                 </viewController>
@@ -100,14 +150,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jp9-dg-mEL">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jp9-dg-mEL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" id="o8P-Tu-e84">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o8P-Tu-e84" id="szr-xB-ZvE">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="jp9-dg-mEL" secondAttribute="trailing" constant="-20" id="2Du-S5-6hn"/>
                             <constraint firstItem="saz-Bt-b9R" firstAttribute="top" secondItem="jp9-dg-mEL" secondAttribute="bottom" id="8k1-Uf-MiK"/>
@@ -124,4 +188,9 @@
             <point key="canvasLocation" x="1836" y="355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nexticon" width="60" height="60"/>
+        <image name="pauseicon" width="70" height="70"/>
+        <image name="previousicon" width="60" height="60"/>
+    </resources>
 </document>

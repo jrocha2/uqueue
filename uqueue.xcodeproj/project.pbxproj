@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSongViewController.swift; sourceTree = "<group>"; };
 		E744399F1BCD6A1A008A9873 /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
-		E74439A31BCD6B70008A9873 /* QueuedSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueuedSong.swift; sourceTree = "<group>"; };
+		E74439A31BCD6B70008A9873 /* QueuedSong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueuedSong.swift; path = ../QueuedSong.swift; sourceTree = "<group>"; };
 		E766684D1BBD741900B7E1A1 /* uqueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uqueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76668501BBD741900B7E1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E76668521BBD741900B7E1A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,6 @@
 		E76668441BBD741900B7E1A1 = {
 			isa = PBXGroup;
 			children = (
-				E74439A31BCD6B70008A9873 /* QueuedSong.swift */,
 				E766684F1BBD741900B7E1A1 /* uqueue */,
 				E76668641BBD741A00B7E1A1 /* uqueueTests */,
 				E766686F1BBD741A00B7E1A1 /* uqueueUITests */,
@@ -106,6 +105,7 @@
 			children = (
 				E76668521BBD741900B7E1A1 /* ViewController.swift */,
 				E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */,
+				E74439A31BCD6B70008A9873 /* QueuedSong.swift */,
 				E744399F1BCD6A1A008A9873 /* QueueViewController.swift */,
 				E76668541BBD741900B7E1A1 /* Main.storyboard */,
 				E76668591BBD741900B7E1A1 /* LaunchScreen.storyboard */,

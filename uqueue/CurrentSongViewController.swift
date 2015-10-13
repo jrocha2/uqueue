@@ -16,6 +16,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     var currentSong:MPMediaItem?
     var currentQueue:[QueuedSong]?
     
+    @IBOutlet weak var playAndPauseButton: UIButton!
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var albumTitleLabel: UILabel!
@@ -25,7 +26,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         super.viewDidLoad()
         
         myPicker.delegate = self
-        myPicker.allowsPickingMultipleItems = false
+        myPicker.allowsPickingMultipleItems = true
         
         selectSong()
         currentSong = myPlayer.nowPlayingItem
@@ -33,11 +34,15 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         // Makes sure current info stays up to day if song ever changes
         myPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerPlaybackStateDidChangeNotification, object: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
     }
     
     // Choose a song to add to the queue
@@ -52,6 +57,15 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPlayer.play()
     }
     
+    @IBAction func playOrPausePressed() {
+        if myPlayer.playbackState == MPMusicPlaybackState.Paused {
+            playAndPauseButton.setImage(UIImage(named: "pauseicon"), forState: UIControlState.Normal)
+            myPlayer.play()
+        } else {
+            playAndPauseButton.setImage(UIImage(named: "playicon"), forState: UIControlState.Normal)
+                myPlayer.pause()
+        }
+    }
     
     // Displays Media Picker
     func selectSong() {
@@ -110,18 +124,21 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         albumTitleLabel.text = currentSong?.albumTitle
         artistNameLabel.text = currentSong?.artist
         albumImage.image = currentSong?.artwork?.imageWithSize(CGSize(width: 150,height: 150))
+        
+        if myPlayer.playbackState == MPMusicPlaybackState.Paused {
+            playAndPauseButton.setImage(UIImage(named: "playicon"), forState: UIControlState.Normal)
+        } else {
+            playAndPauseButton.setImage(UIImage(named: "pauseicon"), forState: UIControlState.Normal)
+        }
     }
     
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "queueSegue") {
+            let svc = segue.destinationViewController as! QueueViewController;
+            svc.toPass = currentQueue
+        }
     }
-    */
 
 }
