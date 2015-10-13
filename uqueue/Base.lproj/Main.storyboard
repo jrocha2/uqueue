@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Q0s-3C-AAc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Current Song View Controller-->
@@ -53,10 +54,19 @@
                                     <action selector="chooseButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="z3z-KG-1gT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
+                                <rect key="frame" x="486" y="540" width="32" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="jKi-VD-4Rr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Qc-tg-ECM" secondAttribute="trailing" constant="62" id="1N3-wW-LdV"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="HZT-v8-nJH"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="IPU-38-ybZ"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="top" secondItem="Sxp-Wm-mTO" secondAttribute="bottom" constant="39" id="MZe-eR-rIq"/>
@@ -64,6 +74,7 @@
                             <constraint firstItem="94e-mx-wxj" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="TtA-Vd-n12"/>
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="94e-mx-wxj" secondAttribute="bottom" constant="30" id="mKQ-Uj-xn3"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="nd1-St-k9Z"/>
+                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="1Qc-tg-ECM" secondAttribute="bottom" constant="30" id="sZG-h5-tzC"/>
                         </constraints>
                     </view>
                     <connections>

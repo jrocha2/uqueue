@@ -13,14 +13,13 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
 
     let myPlayer = MPMusicPlayerController.systemMusicPlayer()
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
-    var currentSong:MPMediaItem!
-    var currentQueue:MPMediaItemCollection!
+    var currentSong:MPMediaItem?
+    var currentQueue:MPMediaItemCollection?
     
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +27,12 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPicker.delegate = self
         myPicker.allowsPickingMultipleItems = false
         
-        // This code when would just set the queue to be the entire music library
-//        let mediaItems = MPMediaQuery.songsQuery().items
-//        let query = MPMediaQuery.songsQuery()
-//        let predicate = MPMediaPropertyPredicate(value: "Music", forProperty: MPMediaItemPropertyMediaType)
-//        query.filterPredicates = NSSet(object: predicate)
-//            as? Set<MPMediaPredicate>
-//        let mediaCollection = MPMediaItemCollection(items: mediaItems!)
-//        myPlayer.setQueueWithItemCollection(mediaCollection)
-        
         selectSong()
         currentSong = myPlayer.nowPlayingItem
         
-        //Timer that calls updateCurrentInfo every 0.1 seconds
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateCurrentInfo"), userInfo: nil, repeats: true)
+        // Makes sure current info stays up to day if song ever changes
+        myPlayer.beginGeneratingPlaybackNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,21 +40,56 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    // Choose a song to add to the queue
     @IBAction func chooseButtonPressed() {
         selectSong()
     }
+    
+    // Skip to next song in the queue
+    @IBAction func nextButtonPressed() {
+        myPlayer.skipToNextItem()
+        popQueue()
+        myPlayer.play()
+    }
+    
     
     // Displays Media Picker
     func selectSong() {
         self.presentViewController(myPicker, animated: true, completion: nil)
     }
     
+    // Pops front song off of the queue
+    func popQueue() {
+        var resultArray = [MPMediaItem]()
+        for item in currentQueue!.items as [MPMediaItem] {
+            resultArray.append(item)
+        }
+        if (resultArray.count > 0) {
+            resultArray.removeFirst()
+        }
+        currentQueue = MPMediaItemCollection(items: resultArray)
+        myPlayer.setQueueWithItemCollection(currentQueue!)
+    }
+    
     // Called when an item is chosen in Media Picker
     func mediaPicker(myPicker: MPMediaPickerController,
         didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-            myPlayer.setQueueWithItemCollection(mediaItemCollection)
-            myPlayer.play()
+            var resultArray = [MPMediaItem]()
+            if currentQueue?.count > 0 {
+                for item in currentQueue!.items as [MPMediaItem]{
+                    resultArray.append(item)
+                }
+            }
+            for item in mediaItemCollection.items as [MPMediaItem] {
+                resultArray.append(item)
+            }
+            let resultQueue = MPMediaItemCollection(items: resultArray)
+            myPlayer.setQueueWithItemCollection(resultQueue)
+            currentQueue = resultQueue
+       
+            currentSong = myPlayer.nowPlayingItem
             myPicker.dismissViewControllerAnimated(true, completion: nil)
+            myPlayer.play()
     }
     
     // Called to cancel the Media Picker 
