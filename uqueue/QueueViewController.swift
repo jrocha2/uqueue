@@ -22,7 +22,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         currentQueue = toPass
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.darkTextColor()
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -38,7 +37,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let item = currentQueue![indexPath.row]
         cell.textLabel?.text = item.media.title
-        cell.textLabel?.textColor = UIColor.whiteColor() 
         return cell
     }
 

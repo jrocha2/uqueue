@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		87B0A63F1BCDD1B400FB18A0 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B0A63E1BCDD1B400FB18A0 /* PlaylistViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E74439A01BCD6A1A008A9873 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399F1BCD6A1A008A9873 /* QueueViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E74439A41BCD6B70008A9873 /* QueuedSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74439A31BCD6B70008A9873 /* QueuedSong.swift */; settings = {ASSET_TAGS = (); }; };
+		87B0A63F1BCDD1B400FB18A0 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B0A63E1BCDD1B400FB18A0 /* PlaylistViewController.swift */; };
+		E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */; };
+		E74439A01BCD6A1A008A9873 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399F1BCD6A1A008A9873 /* QueueViewController.swift */; };
+		E74439A41BCD6B70008A9873 /* QueuedSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74439A31BCD6B70008A9873 /* QueuedSong.swift */; };
 		E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668501BBD741900B7E1A1 /* AppDelegate.swift */; };
 		E76668531BBD741900B7E1A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668521BBD741900B7E1A1 /* ViewController.swift */; };
 		E76668561BBD741900B7E1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76668541BBD741900B7E1A1 /* Main.storyboard */; };
@@ -204,7 +204,7 @@
 				TargetAttributes = {
 					E766684C1BBD741900B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 47J734W9F8;
+						DevelopmentTeam = SB59U4RRP6;
 					};
 					E76668601BBD741A00B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
