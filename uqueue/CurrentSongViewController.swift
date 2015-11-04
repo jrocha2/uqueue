@@ -59,10 +59,10 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     
     @IBAction func playOrPausePressed() {
         if myPlayer.playbackState == MPMusicPlaybackState.Paused {
-            playAndPauseButton.setImage(UIImage(named: "pauseicon"), forState: UIControlState.Normal)
+            playAndPauseButton.setImage(UIImage(named: "pausebutton"), forState: UIControlState.Normal)
             myPlayer.play()
         } else {
-            playAndPauseButton.setImage(UIImage(named: "playicon"), forState: UIControlState.Normal)
+            playAndPauseButton.setImage(UIImage(named: "playbutton"), forState: UIControlState.Normal)
                 myPlayer.pause()
         }
     }
@@ -126,9 +126,9 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         albumImage.image = currentSong?.artwork?.imageWithSize(CGSize(width: 150,height: 150))
         
         if myPlayer.playbackState == MPMusicPlaybackState.Paused {
-            playAndPauseButton.setImage(UIImage(named: "playicon"), forState: UIControlState.Normal)
+            playAndPauseButton.setImage(UIImage(named: "playbutton"), forState: UIControlState.Normal)
         } else {
-            playAndPauseButton.setImage(UIImage(named: "pauseicon"), forState: UIControlState.Normal)
+            playAndPauseButton.setImage(UIImage(named: "pausebutton"), forState: UIControlState.Normal)
         }
     }
     

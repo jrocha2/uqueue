@@ -81,14 +81,6 @@
                                     <segue destination="1V2-1G-rFh" kind="show" identifier="queueSegue" id="CBN-b5-S2a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
-                                <rect key="frame" x="355" y="454" width="60" height="60"/>
-                                <animations/>
-                                <state key="normal" image="nexticon"/>
-                                <connections>
-                                    <action selector="nextButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="jKi-VD-4Rr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94e-mx-wxj">
                                 <rect key="frame" x="495" y="550" width="85" height="30"/>
                                 <animations/>
@@ -100,15 +92,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
                                 <rect key="frame" x="265" y="449" width="70" height="70"/>
                                 <animations/>
-                                <state key="normal" image="pauseicon"/>
+                                <state key="normal" image="pausebutton"/>
                                 <connections>
                                     <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG2-xT-SKm">
-                                <rect key="frame" x="185" y="454" width="60" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG2-xT-SKm">
+                                <rect key="frame" x="154" y="459" width="60" height="60"/>
                                 <animations/>
-                                <state key="normal" image="previousicon"/>
+                                <state key="normal" image="rbutton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODx-GM-qua">
                                 <rect key="frame" x="285" y="550" width="30" height="30"/>
@@ -118,19 +110,27 @@
                                     <segue destination="5Gn-4e-S1t" kind="show" id="D3Y-Cj-PiZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
+                                <rect key="frame" x="390" y="454" width="60" height="60"/>
+                                <animations/>
+                                <state key="normal" image="ffbutton"/>
+                                <connections>
+                                    <action selector="nextButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="jKi-VD-4Rr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZgS-b3-wRU" firstAttribute="baseline" secondItem="94e-mx-wxj" secondAttribute="baseline" id="22i-cd-KZk"/>
-                            <constraint firstItem="cG2-xT-SKm" firstAttribute="centerY" secondItem="TN4-yW-pkx" secondAttribute="centerY" id="6Rt-yc-Zhe"/>
+                            <constraint firstItem="cG2-xT-SKm" firstAttribute="centerY" secondItem="TN4-yW-pkx" secondAttribute="centerY" constant="5" id="6Rt-yc-Zhe"/>
                             <constraint firstItem="4w5-b0-hPJ" firstAttribute="top" secondItem="drN-vN-b8O" secondAttribute="bottom" constant="26" id="8cs-jE-bD8"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="leading" secondItem="bb0-Ps-Q9H" secondAttribute="leading" id="9yC-uY-Xax"/>
                             <constraint firstAttribute="bottom" secondItem="bb0-Ps-Q9H" secondAttribute="bottom" constant="212" id="B0C-17-xfz"/>
                             <constraint firstItem="TN4-yW-pkx" firstAttribute="top" secondItem="WNP-iD-2ka" secondAttribute="bottom" constant="40" id="BGX-4O-0qr"/>
                             <constraint firstItem="ZgS-b3-wRU" firstAttribute="baseline" secondItem="ODx-GM-qua" secondAttribute="baseline" id="JNb-5e-RVN"/>
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="TN4-yW-pkx" secondAttribute="bottom" constant="81" id="LP3-Mr-Ryd"/>
-                            <constraint firstItem="WNP-iD-2ka" firstAttribute="trailing" secondItem="1Qc-tg-ECM" secondAttribute="trailing" id="ONr-g9-xj6"/>
+                            <constraint firstItem="WNP-iD-2ka" firstAttribute="trailing" secondItem="1Qc-tg-ECM" secondAttribute="trailing" constant="-35" id="ONr-g9-xj6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="94e-mx-wxj" secondAttribute="trailing" id="Og0-Ba-MLT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="drN-vN-b8O" secondAttribute="trailing" constant="115" id="PMk-wF-34x"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="leading" secondItem="4w5-b0-hPJ" secondAttribute="leading" id="SFw-E1-hvp"/>
@@ -141,12 +141,12 @@
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="top" secondItem="4w5-b0-hPJ" secondAttribute="bottom" constant="3" id="ewY-Is-GBT"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="trailing" secondItem="bb0-Ps-Q9H" secondAttribute="trailing" id="hbk-yD-n4R"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="top" secondItem="hnL-Eg-lHy" secondAttribute="topMargin" constant="37" id="le7-NZ-gHN"/>
-                            <constraint firstItem="WNP-iD-2ka" firstAttribute="leading" secondItem="cG2-xT-SKm" secondAttribute="leading" id="mog-aF-97n"/>
+                            <constraint firstItem="WNP-iD-2ka" firstAttribute="leading" secondItem="cG2-xT-SKm" secondAttribute="leading" constant="31" id="mog-aF-97n"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="leading" secondItem="hnL-Eg-lHy" secondAttribute="leadingMargin" constant="116" id="opb-IW-97V"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="centerX" secondItem="TN4-yW-pkx" secondAttribute="centerX" id="sza-0B-dPS"/>
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="94e-mx-wxj" secondAttribute="bottom" constant="20" id="tim-rB-htm"/>
                             <constraint firstItem="4w5-b0-hPJ" firstAttribute="centerX" secondItem="drN-vN-b8O" secondAttribute="centerX" id="ulq-se-Xs7"/>
-                            <constraint firstItem="1Qc-tg-ECM" firstAttribute="top" secondItem="cG2-xT-SKm" secondAttribute="top" id="yxT-w0-AwA"/>
+                            <constraint firstItem="1Qc-tg-ECM" firstAttribute="top" secondItem="cG2-xT-SKm" secondAttribute="top" constant="-5" id="yxT-w0-AwA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zg5-Mp-yRq"/>
@@ -244,8 +244,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nexticon" width="60" height="60"/>
-        <image name="pauseicon" width="70" height="70"/>
-        <image name="previousicon" width="60" height="60"/>
+        <image name="ffbutton" width="70" height="70"/>
+        <image name="pausebutton" width="70" height="70"/>
+        <image name="rbutton" width="70" height="70"/>
     </resources>
 </document>
