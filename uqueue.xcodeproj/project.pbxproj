@@ -18,6 +18,7 @@
 		E76668661BBD741A00B7E1A1 /* uqueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668651BBD741A00B7E1A1 /* uqueueTests.swift */; };
 		E76668711BBD741A00B7E1A1 /* uqueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668701BBD741A00B7E1A1 /* uqueueUITests.swift */; };
 		E7A1C0741BEFEEFC000A5EA0 /* StoredPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */; };
+		E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E76668701BBD741A00B7E1A1 /* uqueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uqueueUITests.swift; sourceTree = "<group>"; };
 		E76668721BBD741A00B7E1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredPlaylists.swift; sourceTree = "<group>"; };
+		E7A1C0761BF163AC000A5EA0 /* uqueue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = uqueue.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				E76668571BBD741900B7E1A1 /* Assets.xcassets */,
 				E76668501BBD741900B7E1A1 /* AppDelegate.swift */,
 				E766685C1BBD741900B7E1A1 /* Info.plist */,
+				E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */,
 			);
 			path = uqueue;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */,
 				E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */,
 				E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */,
+				E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */,
 				E71901431BEAEE49007D7641 /* UserPlaylist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +531,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E7A1C0761BF163AC000A5EA0 /* uqueue.xcdatamodel */,
+			);
+			currentVersion = E7A1C0761BF163AC000A5EA0 /* uqueue.xcdatamodel */;
+			path = uqueue.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E76668451BBD741900B7E1A1 /* Project object */;
 }
