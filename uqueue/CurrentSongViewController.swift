@@ -13,8 +13,10 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
 
     let myPlayer = MPMusicPlayerController.systemMusicPlayer()
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
+    var currentPlaylistName:String?
+    var currentPlaylist:UserPlaylist?
+    var modifiedQueue:[MPMediaItem]?
     var currentSong:MPMediaItem?
-    var currentQueue:[QueuedSong]?
     
     @IBOutlet weak var playAndPauseButton: UIButton!
     @IBOutlet weak var albumImage: UIImageView!
@@ -28,13 +30,18 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPicker.delegate = self
         myPicker.allowsPickingMultipleItems = true
         
-        selectSong()
+        currentPlaylist = StoredPlaylists.sharedInstance.userPlaylists[currentPlaylistName!]
+        myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
+    
+        myPlayer.play()
         currentSong = myPlayer.nowPlayingItem
-        
+    
         // Makes sure current info stays up to day if song ever changes
         myPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerPlaybackStateDidChangeNotification, object: nil)
+        
+        myPlayer.pause()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -53,7 +60,11 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     // Skip to next song in the queue
     @IBAction func nextButtonPressed() {
         myPlayer.skipToNextItem()
-        popQueue()
+        myPlayer.play()
+    }
+    
+    @IBAction func previousButtonPressed() {
+        myPlayer.skipToPreviousItem()
         myPlayer.play()
     }
     
@@ -63,7 +74,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
             myPlayer.play()
         } else {
             playAndPauseButton.setImage(UIImage(named: "playbutton"), forState: UIControlState.Normal)
-                myPlayer.pause()
+            myPlayer.pause()
         }
     }
     
@@ -72,44 +83,15 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         self.presentViewController(myPicker, animated: true, completion: nil)
     }
     
-    // Pops front song off of the queue
-    func popQueue() {
-        var resultArray = [MPMediaItem]()
-        var newQueue = [QueuedSong]()
-        for item in currentQueue! {
-            resultArray.append(item.media)
-            newQueue.append(item)
-        }
-        if (resultArray.count > 0) {
-            resultArray.removeFirst()
-            newQueue.removeFirst()
-        }
-        currentQueue = newQueue
-        myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: resultArray))
-    }
-    
     // Called when an item is chosen in Media Picker
     func mediaPicker(myPicker: MPMediaPickerController,
         didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-            var resultArray = [MPMediaItem]()
-            var newQueue = [QueuedSong]()
-            if currentQueue?.count > 0 {
-                for item in currentQueue!{
-                    resultArray.append(item.media)
-                    newQueue.append(item)
-                }
+            for item in mediaItemCollection.items {
+                currentPlaylist!.songs.append(item)
             }
-            for item in mediaItemCollection.items as [MPMediaItem] {
-                resultArray.append(item)
-                newQueue.append(QueuedSong(media: item))
-            }
-            myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: resultArray))
-
-            currentQueue = newQueue
-       
-            currentSong = myPlayer.nowPlayingItem
+            myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
+            
             myPicker.dismissViewControllerAnimated(true, completion: nil)
-            myPlayer.play()
     }
     
     // Called to cancel the Media Picker 
@@ -137,7 +119,8 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "queueSegue") {
             let svc = segue.destinationViewController as! QueueViewController;
-            svc.toPass = currentQueue
+            svc.currentPlaylist = currentPlaylist
+            svc.currentlyPlaying = myPlayer.indexOfNowPlayingItem
         }
     }
 
