@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		87B0A63F1BCDD1B400FB18A0 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B0A63E1BCDD1B400FB18A0 /* PlaylistViewController.swift */; };
 		E71901431BEAEE49007D7641 /* UserPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71901421BEAEE49007D7641 /* UserPlaylist.swift */; };
 		E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */; };
 		E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		87B0A63E1BCDD1B400FB18A0 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		E71901421BEAEE49007D7641 /* UserPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaylist.swift; sourceTree = "<group>"; };
 		E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaylistViewController.swift; sourceTree = "<group>"; };
 		E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSongViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */,
 				E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */,
 				E744399F1BCD6A1A008A9873 /* QueueViewController.swift */,
-				87B0A63E1BCDD1B400FB18A0 /* PlaylistViewController.swift */,
 				E76668541BBD741900B7E1A1 /* Main.storyboard */,
 				E76668591BBD741900B7E1A1 /* LaunchScreen.storyboard */,
 				E76668571BBD741900B7E1A1 /* Assets.xcassets */,
@@ -273,7 +270,6 @@
 			files = (
 				E7A1C0741BEFEEFC000A5EA0 /* StoredPlaylists.swift in Sources */,
 				E74439A01BCD6A1A008A9873 /* QueueViewController.swift in Sources */,
-				87B0A63F1BCDD1B400FB18A0 /* PlaylistViewController.swift in Sources */,
 				E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */,
 				E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */,
 				E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */,
