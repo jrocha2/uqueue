@@ -10,8 +10,9 @@ import UIKit
 
 class QueueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var toPass:[QueuedSong]?
-    var currentQueue:[QueuedSong]?
+    var currentPlaylist:UserPlaylist?
+    var currentlyPlaying:Int?
+    
     @IBOutlet weak var tableView: UITableView!
     
     let textCellIdentifier = "songCell"
@@ -19,7 +20,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentQueue = toPass
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -29,14 +29,19 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentQueue!.count
+        return currentPlaylist!.songs.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        let item = currentQueue![indexPath.row]
-        cell.textLabel?.text = item.media.title
+        let item = currentPlaylist!.songs[indexPath.row]
+        cell.textLabel?.text = item.title
+        
+        if indexPath.row == currentlyPlaying! {
+            cell.textLabel?.textColor = UIColor.greenColor()
+        }
+        
         return cell
     }
 
