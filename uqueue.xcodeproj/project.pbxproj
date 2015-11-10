@@ -207,7 +207,7 @@
 				TargetAttributes = {
 					E766684C1BBD741900B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = SB59U4RRP6;
+						DevelopmentTeam = 47J734W9F8;
 					};
 					E76668601BBD741A00B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -423,7 +423,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue;
+				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue.nd.edu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -437,7 +437,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue;
+				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue.nd.edu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
