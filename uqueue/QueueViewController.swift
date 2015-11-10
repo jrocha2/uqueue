@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class QueueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    var retrievedPlaylists = [NSManagedObject]()
     var currentPlaylist:UserPlaylist?
     var currentlyPlaying:Int?
     
@@ -22,6 +24,26 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        self.navigationController!.toolbarHidden = false;
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "UqueuePlaylist")
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            retrievedPlaylists = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -44,8 +66,70 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return cell
     }
-
     
+    // Brings up options when user presses save at the bottom of viewing current queue
+    @IBAction func saveLivePlaylist(sender: AnyObject) {
+        
+        let alert = UIAlertController(title: "Save This Playlist",
+            message: "Save as new playlist or overwrite the current one",
+            preferredStyle: .Alert)
+        
+        let overwriteAction = UIAlertAction(title: "Overwrite",
+            style: .Default,
+            handler: { (action:UIAlertAction) -> Void in
+                self.savePlaylistToCoreData(self.currentPlaylist!)
+                
+        })
+        
+        let saveAction = UIAlertAction(title: "Save As",
+            style: .Default,
+            handler: { (action:UIAlertAction) -> Void in
+                let textField = alert.textFields!.first
+                let newPlaylist = self.currentPlaylist
+                newPlaylist!.title = textField!.text!
+                self.savePlaylistToCoreData(newPlaylist!)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+            style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField) -> Void in
+        }
+        
+        alert.addAction(overwriteAction)
+        alert.addAction(saveAction);
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // Saves to CoreData where the name of the entity is UqueuePlaylist and the attributes
+    // are a String for the title and an array of MPMediaItems for the songs
+    func savePlaylistToCoreData(list: UserPlaylist) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("UqueuePlaylist",
+            inManagedObjectContext:managedContext)
+        
+        let playlist = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: managedContext)
+        
+        playlist.setValue(list.songs, forKey: "songs")
+        playlist.setValue(list.title, forKey: "title")
+        
+        do {
+            try managedContext.save()
+            retrievedPlaylists.append(playlist)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+
     /*
     // MARK: - Navigation
 

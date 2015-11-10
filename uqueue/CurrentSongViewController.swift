@@ -18,6 +18,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     var modifiedQueue:[MPMediaItem]?
     var currentSong:MPMediaItem?
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var playAndPauseButton: UIButton!
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!

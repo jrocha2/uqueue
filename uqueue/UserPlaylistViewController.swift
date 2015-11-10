@@ -29,6 +29,10 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
 
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -50,6 +54,7 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             StoredPlaylists.sharedInstance.playlistNames.append(title!)
             StoredPlaylists.sharedInstance.userPlaylists[title!] = UserPlaylist(name: title!, contents: songs!)
         }
+
     }
 
     override func didReceiveMemoryWarning() {
