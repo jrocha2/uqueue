@@ -41,10 +41,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="T15-xO-9O0">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T15-xO-9O0" id="o2O-ak-oU4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -166,14 +166,6 @@
                                     <action selector="previousButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="W49-FL-poh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODx-GM-qua">
-                                <rect key="frame" x="285" y="550" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="*"/>
-                                <connections>
-                                    <segue destination="eHI-1P-mh4" kind="show" id="4e3-6K-NF7"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
                                 <rect key="frame" x="390" y="454" width="60" height="60"/>
                                 <animations/>
@@ -195,7 +187,6 @@
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="leading" secondItem="bb0-Ps-Q9H" secondAttribute="leading" id="9yC-uY-Xax"/>
                             <constraint firstAttribute="bottom" secondItem="bb0-Ps-Q9H" secondAttribute="bottom" constant="212" id="B0C-17-xfz"/>
                             <constraint firstItem="TN4-yW-pkx" firstAttribute="top" secondItem="WNP-iD-2ka" secondAttribute="bottom" constant="40" id="BGX-4O-0qr"/>
-                            <constraint firstItem="ZgS-b3-wRU" firstAttribute="baseline" secondItem="ODx-GM-qua" secondAttribute="baseline" id="JNb-5e-RVN"/>
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="TN4-yW-pkx" secondAttribute="bottom" constant="81" id="LP3-Mr-Ryd"/>
                             <constraint firstItem="cG2-xT-SKm" firstAttribute="bottom" secondItem="TN4-yW-pkx" secondAttribute="bottom" id="MDY-Df-uww"/>
                             <constraint firstItem="1Qc-tg-ECM" firstAttribute="centerY" secondItem="TN4-yW-pkx" secondAttribute="centerY" id="NS5-it-FnC"/>
@@ -204,7 +195,6 @@
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="leading" secondItem="4w5-b0-hPJ" secondAttribute="leading" id="SFw-E1-hvp"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="Wr1-ka-xul"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="trailing" secondItem="4w5-b0-hPJ" secondAttribute="trailing" id="WrB-aA-vcU"/>
-                            <constraint firstItem="ODx-GM-qua" firstAttribute="centerX" secondItem="TN4-yW-pkx" secondAttribute="centerX" id="c8P-KX-521"/>
                             <constraint firstItem="ZgS-b3-wRU" firstAttribute="leading" secondItem="hnL-Eg-lHy" secondAttribute="leadingMargin" id="cAc-HJ-BYJ"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="top" secondItem="4w5-b0-hPJ" secondAttribute="bottom" constant="3" id="ewY-Is-GBT"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="trailing" secondItem="bb0-Ps-Q9H" secondAttribute="trailing" id="hbk-yD-n4R"/>
@@ -251,7 +241,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcV-07-wop" id="i8p-2f-Jzo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -282,7 +272,4 @@
         <image name="pausebutton" width="50" height="50"/>
         <image name="rbutton" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="4e3-6K-NF7"/>
-    </inferredMetricsTieBreakers>
 </document>

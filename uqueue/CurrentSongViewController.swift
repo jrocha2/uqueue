@@ -32,7 +32,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         
         currentPlaylist = StoredPlaylists.sharedInstance.userPlaylists[currentPlaylistName!]
         myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
-    
+        
         myPlayer.play()
         currentSong = myPlayer.nowPlayingItem
     
@@ -42,14 +42,6 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerPlaybackStateDidChangeNotification, object: nil)
         
         myPlayer.pause()
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
     }
     
     // Choose a song to add to the queue
