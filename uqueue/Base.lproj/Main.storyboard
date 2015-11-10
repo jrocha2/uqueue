@@ -44,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T15-xO-9O0" id="o2O-ak-oU4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -121,7 +121,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-iD-2ka">
-                                <rect key="frame" x="185" y="388" width="230" height="21"/>
+                                <rect key="frame" x="185" y="408" width="230" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="r0g-nF-9NB"/>
@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
-                                <rect key="frame" x="265" y="449" width="70" height="70"/>
+                                <rect key="frame" x="275" y="469" width="50" height="50"/>
                                 <animations/>
                                 <state key="normal" image="pausebutton"/>
                                 <connections>
@@ -277,7 +277,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcV-07-wop" id="i8p-2f-Jzo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -304,8 +304,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ffbutton" width="70" height="70"/>
-        <image name="pausebutton" width="70" height="70"/>
-        <image name="rbutton" width="70" height="70"/>
+        <image name="ffbutton" width="50" height="50"/>
+        <image name="pausebutton" width="50" height="50"/>
+        <image name="rbutton" width="50" height="50"/>
     </resources>
 </document>
