@@ -8,10 +8,13 @@
 
 import UIKit
 import MediaPlayer
+import CoreData
 
 class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var retrievedPlaylists = [NSManagedObject]()
     
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
     let textCellIdentifier = "textCell"
@@ -26,6 +29,27 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "UqueuePlaylist")
+        
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            retrievedPlaylists = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        for item in retrievedPlaylists {
+            let title = item.valueForKey("title") as? String
+            let songs = item.valueForKey("songs") as? [MPMediaItem]
+            StoredPlaylists.sharedInstance.playlistNames.append(title!)
+            StoredPlaylists.sharedInstance.userPlaylists[title!] = UserPlaylist(name: title!, contents: songs!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +122,8 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             StoredPlaylists.sharedInstance.playlistNames.append(newPlaylistName!)
             StoredPlaylists.sharedInstance.userPlaylists[newPlaylistName!] = newPlaylist
             
+            savePlaylistToCoreData(newPlaylist)
+            
             myPicker.dismissViewControllerAnimated(true, completion: nil)
             tableView.reloadData()
     }
@@ -116,6 +142,32 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             svc.currentPlaylistName = selectedPlaylist
         }
 
+    }
+    
+    
+    // Saves to CoreData where the name of the entity is UqueuePlaylist and the attributes
+    // are a String for the title and an array of MPMediaItems for the songs
+    func savePlaylistToCoreData(list: UserPlaylist) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("UqueuePlaylist",
+            inManagedObjectContext:managedContext)
+        
+        let playlist = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: managedContext)
+        
+        playlist.setValue(list.songs, forKey: "songs")
+        playlist.setValue(list.title, forKey: "title")
+        
+        do {
+            try managedContext.save()
+            retrievedPlaylists.append(playlist)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
 }
 
