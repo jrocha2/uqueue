@@ -10,7 +10,8 @@ import UIKit
 import MediaPlayer
 
 class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelegate {
-
+    //@IBOutlet weak var toolbar: UIBarButtonItem!
+   // @IBOutlet weak var playPauseButton: UIBarButtonItem!
     let myPlayer = MPMusicPlayerController.systemMusicPlayer()
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
     var currentPlaylistName:String?
@@ -60,6 +61,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPlayer.skipToPreviousItem()
         myPlayer.play()
     }
+    
     
     @IBAction func playOrPausePressed() {
         if myPlayer.playbackState == MPMusicPlaybackState.Paused {
