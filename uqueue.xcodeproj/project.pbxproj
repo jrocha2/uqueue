@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBED234C2974E85C45146C52 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FEAA692861C792E8B9B9481 /* Pods.framework */; };
 		E71901431BEAEE49007D7641 /* UserPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71901421BEAEE49007D7641 /* UserPlaylist.swift */; };
 		E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */; };
 		E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */; };
@@ -17,6 +18,10 @@
 		E766685B1BBD741900B7E1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76668591BBD741900B7E1A1 /* LaunchScreen.storyboard */; };
 		E76668661BBD741A00B7E1A1 /* uqueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668651BBD741A00B7E1A1 /* uqueueTests.swift */; };
 		E76668711BBD741A00B7E1A1 /* uqueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76668701BBD741A00B7E1A1 /* uqueueUITests.swift */; };
+		E7937CC91C029A2400EC46AA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7937CC81C029A2400EC46AA /* FBSDKCoreKit.framework */; };
+		E7937CCB1C029A2E00EC46AA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7937CCA1C029A2E00EC46AA /* FBSDKLoginKit.framework */; };
+		E7937CCD1C029A3A00EC46AA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7937CCC1C029A3A00EC46AA /* FBSDKShareKit.framework */; };
+		E7937CCF1C02A52D00EC46AA /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7937CCE1C02A52D00EC46AA /* AuthenticationViewController.swift */; };
 		E7A1C0741BEFEEFC000A5EA0 /* StoredPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */; };
 		E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -39,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FEAA692861C792E8B9B9481 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		335C502E8DE0E4E7ABBDF4DA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C7CC39BC0E5DECF4C9651A81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E71901421BEAEE49007D7641 /* UserPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaylist.swift; sourceTree = "<group>"; };
 		E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaylistViewController.swift; sourceTree = "<group>"; };
 		E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSongViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +63,10 @@
 		E766686C1BBD741A00B7E1A1 /* uqueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uqueueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76668701BBD741A00B7E1A1 /* uqueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uqueueUITests.swift; sourceTree = "<group>"; };
 		E76668721BBD741A00B7E1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7937CC81C029A2400EC46AA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		E7937CCA1C029A2E00EC46AA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		E7937CCC1C029A3A00EC46AA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		E7937CCE1C02A52D00EC46AA /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredPlaylists.swift; sourceTree = "<group>"; };
 		E7A1C0761BF163AC000A5EA0 /* uqueue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = uqueue.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7937CCB1C029A2E00EC46AA /* FBSDKLoginKit.framework in Frameworks */,
+				E7937CC91C029A2400EC46AA /* FBSDKCoreKit.framework in Frameworks */,
+				E7937CCD1C029A3A00EC46AA /* FBSDKShareKit.framework in Frameworks */,
+				CBED234C2974E85C45146C52 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57ABD970E302B6BD1FD9F5A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7CC39BC0E5DECF4C9651A81 /* Pods.debug.xcconfig */,
+				335C502E8DE0E4E7ABBDF4DA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E76668441BBD741900B7E1A1 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +116,8 @@
 				E76668641BBD741A00B7E1A1 /* uqueueTests */,
 				E766686F1BBD741A00B7E1A1 /* uqueueUITests */,
 				E766684E1BBD741900B7E1A1 /* Products */,
+				57ABD970E302B6BD1FD9F5A9 /* Pods */,
+				FF02B4B43C8D55A2514CA17C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +136,7 @@
 			children = (
 				E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */,
 				E71901421BEAEE49007D7641 /* UserPlaylist.swift */,
+				E7937CCE1C02A52D00EC46AA /* AuthenticationViewController.swift */,
 				E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */,
 				E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */,
 				E744399F1BCD6A1A008A9873 /* QueueViewController.swift */,
@@ -118,6 +146,9 @@
 				E76668501BBD741900B7E1A1 /* AppDelegate.swift */,
 				E766685C1BBD741900B7E1A1 /* Info.plist */,
 				E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */,
+				E7937CCC1C029A3A00EC46AA /* FBSDKShareKit.framework */,
+				E7937CCA1C029A2E00EC46AA /* FBSDKLoginKit.framework */,
+				E7937CC81C029A2400EC46AA /* FBSDKCoreKit.framework */,
 			);
 			path = uqueue;
 			sourceTree = "<group>";
@@ -140,6 +171,14 @@
 			path = uqueueUITests;
 			sourceTree = "<group>";
 		};
+		FF02B4B43C8D55A2514CA17C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FEAA692861C792E8B9B9481 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E76668751BBD741A00B7E1A1 /* Build configuration list for PBXNativeTarget "uqueue" */;
 			buildPhases = (
+				A36FD558B22628C876E0E927 /* Check Pods Manifest.lock */,
 				E76668491BBD741900B7E1A1 /* Sources */,
 				E766684A1BBD741900B7E1A1 /* Frameworks */,
 				E766684B1BBD741900B7E1A1 /* Resources */,
+				23B8B7E1ABC7FD74D0E13614 /* Embed Pods Frameworks */,
+				7FCC756616711EB51C4D3239 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +249,7 @@
 				TargetAttributes = {
 					E766684C1BBD741900B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 47J734W9F8;
+						DevelopmentTeam = 4C9VKWQ9S7;
 					};
 					E76668601BBD741A00B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -266,6 +308,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23B8B7E1ABC7FD74D0E13614 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FCC756616711EB51C4D3239 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A36FD558B22628C876E0E927 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E76668491BBD741900B7E1A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -275,6 +365,7 @@
 				E74439A01BCD6A1A008A9873 /* QueueViewController.swift in Sources */,
 				E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */,
 				E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */,
+				E7937CCF1C02A52D00EC46AA /* AuthenticationViewController.swift in Sources */,
 				E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */,
 				E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */,
 				E71901431BEAEE49007D7641 /* UserPlaylist.swift in Sources */,
@@ -417,10 +508,15 @@
 		};
 		E76668761BBD741A00B7E1A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7CC39BC0E5DECF4C9651A81 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/uqueue",
+				);
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue.nd.edu;
@@ -431,10 +527,15 @@
 		};
 		E76668771BBD741A00B7E1A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 335C502E8DE0E4E7ABBDF4DA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/uqueue",
+				);
 				INFOPLIST_FILE = uqueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jrocha2sfotsch.uqueue.nd.edu;

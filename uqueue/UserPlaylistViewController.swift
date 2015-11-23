@@ -10,6 +10,7 @@ import UIKit
 import MediaPlayer
 import CoreData
 
+
 class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +30,7 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
 
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -82,7 +84,6 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
         selectedPlaylist = cell.textLabel!.text
-        print(selectedPlaylist)
         performSegueWithIdentifier("selectedPlaylist", sender: nil)
     }
     
