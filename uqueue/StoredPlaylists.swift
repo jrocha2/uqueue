@@ -13,6 +13,8 @@ import Foundation
 class StoredPlaylists {
     static let sharedInstance = StoredPlaylists()
     
+    var userFacebookID = String()
+    
     var userPlaylists = [String:UserPlaylist]()
     var playlistNames = [String]()
 }

@@ -33,32 +33,29 @@ class AuthenticationViewController: UIViewController {
         // Facebook authentication
         let facebookLogin = FBSDKLoginManager()
         
-        if !loggedIn {
-        
-            facebookLogin.logInWithReadPermissions(["email"], fromViewController: self, handler: {
-                (facebookResult, facebookError) -> Void in
+        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self, handler: {
+            (facebookResult, facebookError) -> Void in
+            
+            if facebookError != nil {
+                print("Facebook login failed. Error \(facebookError)")
+            } else if facebookResult.isCancelled {
+                print("Facebook login was cancelled.")
+            } else {
+                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 
-                if facebookError != nil {
-                    print("Facebook login failed. Error \(facebookError)")
-                } else if facebookResult.isCancelled {
-                    print("Facebook login was cancelled.")
-                } else {
-                    let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                    
-                    self.myRootRef.authWithOAuthProvider("facebook", token: accessToken,
-                        withCompletionBlock: { error, authData in
-                            
-                            if error != nil {
-                                print("Login failed. \(error)")
-                            } else {
-                                print("Logged in! \(authData)")
-                                self.loggedIn = true
-                                self.performSegueWithIdentifier("authSegue", sender: nil)
-                            }
-                    })
-                }
-            })
-        }
+                self.myRootRef.authWithOAuthProvider("facebook", token: accessToken,
+                    withCompletionBlock: { error, authData in
+                        
+                        if error != nil {
+                            print("Login failed. \(error)")
+                        } else {
+                            print("Logged in! \(authData)")
+                            StoredPlaylists.sharedInstance.userFacebookID = authData.uid
+                            self.performSegueWithIdentifier("authSegue", sender: nil)
+                        }
+                })
+            }
+        })
     }
     
 
