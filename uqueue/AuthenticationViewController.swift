@@ -33,7 +33,7 @@ class AuthenticationViewController: UIViewController {
         // Facebook authentication
         let facebookLogin = FBSDKLoginManager()
         
-        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self, handler: {
+        facebookLogin.logInWithReadPermissions(["user_friends"], fromViewController: self, handler: {
             (facebookResult, facebookError) -> Void in
             
             if facebookError != nil {
@@ -51,6 +51,7 @@ class AuthenticationViewController: UIViewController {
                         } else {
                             print("Logged in! \(authData)")
                             StoredPlaylists.sharedInstance.userFacebookID = authData.uid
+                            
                             self.performSegueWithIdentifier("authSegue", sender: nil)
                         }
                 })

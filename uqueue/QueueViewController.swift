@@ -28,7 +28,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         
         self.navigationController!.toolbarHidden = false;
-        broadcastPlaylist(currentPlaylist!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -133,11 +132,15 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @IBAction func broadcastButtonPressed(sender: AnyObject!) {
+        broadcastPlaylist(currentPlaylist!)
+    }
+    
     func broadcastPlaylist(list: UserPlaylist) {
         let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
         let userRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID)
         
-        let ratings = ["likes" : 0, "dislikes" : 0]
+        
         var songsWithRatings = [String : [String:Int]]()
         var songOrder = [String]()
         
@@ -145,10 +148,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             songOrder.append(song.title!)
             songsWithRatings[song.title!] = ["likes" : 0, "dislikes" : 0]
         }
-        print(songsWithRatings)
-        //songsWithRatings = ["Hello" : ["likes": 0, "dislikes": 0], "Lost and Found": ["likes": 0, "dislikes": 0], "Amazing Grace": ["likes": 0, "dislikes": 0]]
-        //print(songsWithRatings)
-        
         
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
         userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
