@@ -15,7 +15,6 @@ import Firebase
 class AuthenticationViewController: UIViewController {
 
     let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
-    var loggedIn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,33 +32,70 @@ class AuthenticationViewController: UIViewController {
         // Facebook authentication
         let facebookLogin = FBSDKLoginManager()
         
-        facebookLogin.logInWithReadPermissions(["user_friends"], fromViewController: self, handler: {
-            (facebookResult, facebookError) -> Void in
-            
-            if facebookError != nil {
-                print("Facebook login failed. Error \(facebookError)")
-            } else if facebookResult.isCancelled {
-                print("Facebook login was cancelled.")
-            } else {
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                
-                self.myRootRef.authWithOAuthProvider("facebook", token: accessToken,
-                    withCompletionBlock: { error, authData in
-                        
-                        if error != nil {
-                            print("Login failed. \(error)")
-                        } else {
-                            print("Logged in! \(authData)")
-                            StoredPlaylists.sharedInstance.userFacebookID = authData.uid
-                            
-                            self.performSegueWithIdentifier("authSegue", sender: nil)
-                        }
-                })
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            if FBSDKAccessToken.currentAccessToken().hasGranted("user_friends") {
+                getFriends()
             }
-        })
+        }else{
+        
+            facebookLogin.logInWithReadPermissions(["user_friends"], fromViewController: self, handler: {
+                (facebookResult, facebookError) -> Void in
+                
+                if facebookError != nil {
+                    print("Facebook login failed. Error \(facebookError)")
+                } else if facebookResult.isCancelled {
+                    print("Facebook login was cancelled.")
+                } else {
+                    let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                    
+                    self.getPermissions(accessToken)
+                    
+                }
+            })
+        }
     }
     
 
+    func getPermissions(token: String) {
+        self.myRootRef.authWithOAuthProvider("facebook", token: token,
+            withCompletionBlock: { error, authData in
+                
+                if error != nil {
+                    print("Login failed. \(error)")
+                } else {
+                    print("Logged in! \(authData)")
+                    StoredPlaylists.sharedInstance.userFacebookID = authData.uid
+                    self.getFriends()
+                }
+        })
+
+    }
+    
+    
+    func getFriends() {
+        let fbFriendsRequest = FBSDKGraphRequest(graphPath:"me/friends", parameters: nil);
+        fbFriendsRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+            
+            if error == nil {
+                
+                let friendObjects = result["data"] as! [NSDictionary]
+                for friend in friendObjects {
+                    StoredPlaylists.sharedInstance.userFriendsList[friend["name"] as! String] = friend["id"] as? String
+                }
+                print("Friends: \(StoredPlaylists.sharedInstance.userFriendsList)")
+                
+                self.performSegueWithIdentifier("authSegue", sender: nil)
+                
+            } else {
+                
+                print("Error Getting Friends \(error)");
+                
+            }
+        }
+
+    }
+    
+    
     /*
     // MARK: - Navigation
 

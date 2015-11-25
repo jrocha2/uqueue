@@ -14,6 +14,7 @@ class StoredPlaylists {
     static let sharedInstance = StoredPlaylists()
     
     var userFacebookID = String()
+    var userFriendsList = [String:String]()     // [name:uid]
     
     var userPlaylists = [String:UserPlaylist]()
     var playlistNames = [String]()

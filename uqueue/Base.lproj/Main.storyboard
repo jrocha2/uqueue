@@ -157,7 +157,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
                                 <rect key="frame" x="275" y="463" width="50" height="50"/>
                                 <animations/>
-                                <state key="normal" image="433BE7AB-7251-4D62-B8CC-0C6E9F0C7E9C"/>
+                                <state key="normal" image="2EFF6573-C517-4B3B-BE3F-CE527B59E55E"/>
                                 <connections>
                                     <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
@@ -301,7 +301,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="433BE7AB-7251-4D62-B8CC-0C6E9F0C7E9C" width="50" height="50">
+        <image name="2EFF6573-C517-4B3B-BE3F-CE527B59E55E" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
