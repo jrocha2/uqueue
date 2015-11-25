@@ -1,5 +1,5 @@
 # uqueue  
 ####Known Bugs:  
 - Pressing back from the CurrentQueueController makes the "View Queue" button disappear  
-- Broadcasting songs with certain symbols in their name like . or / cause a seg fault
+- Broadcasting songs almost always ends in a seg fault for some reason
 - Sometimes the initial facebook login check will endlessly loop
