@@ -34,7 +34,7 @@ class AuthenticationViewController: UIViewController {
         
         if FBSDKAccessToken.currentAccessToken() != nil {
             if FBSDKAccessToken.currentAccessToken().hasGranted("user_friends") {
-                StoredPlaylists.sharedInstance.userFacebookID = FBSDKAccessToken.currentAccessToken().userID
+                StoredPlaylists.sharedInstance.userFacebookID = "facebook:" + FBSDKAccessToken.currentAccessToken().userID
                 getFriends()
             }
         }else{
