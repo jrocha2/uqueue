@@ -145,8 +145,16 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         var songOrder = [String]()
         
         for song in currentPlaylist!.songs {
-            songOrder.append(song.title!)
-            songsWithRatings[song.title!] = ["likes" : 0, "dislikes" : 0]
+            var title = song.title!
+            title = title.stringByReplacingOccurrencesOfString("/", withString: "-")
+            title = title.stringByReplacingOccurrencesOfString(".", withString: "")
+            title = title.stringByReplacingOccurrencesOfString("#", withString: " ")
+            title = title.stringByReplacingOccurrencesOfString("$", withString: " ")
+            title = title.stringByReplacingOccurrencesOfString("[", withString: "(")
+            title = title.stringByReplacingOccurrencesOfString("]", withString: ")")
+            
+            songOrder.append(title)
+            songsWithRatings[title] = ["likes" : 0, "dislikes" : 0]
         }
         
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
