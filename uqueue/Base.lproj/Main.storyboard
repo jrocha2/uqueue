@@ -157,7 +157,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
                                 <rect key="frame" x="275" y="463" width="50" height="50"/>
                                 <animations/>
-                                <state key="normal" image="AD6756BB-1748-4EEC-8BA6-345FDCDCEB5C"/>
+                                <state key="normal" image="116E6374-C242-4F64-957D-6844CC7A9D94"/>
                                 <connections>
                                     <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
@@ -178,7 +178,7 @@
                                 <animations/>
                                 <state key="normal" title="View Queue"/>
                                 <connections>
-                                    <segue destination="1V2-1G-rFh" kind="show" identifier="queueSegue" id="CBN-b5-S2a"/>
+                                    <segue destination="1V2-1G-rFh" kind="show" identifier="queueSegue" customClass="CustomSegue" customModule="uqueue" customModuleProvider="target" id="AYF-bu-IqG"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="drN-vN-b8O">
@@ -204,20 +204,20 @@
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="94e-mx-wxj" secondAttribute="bottom" constant="26" id="0Ge-qv-9gH"/>
                             <constraint firstItem="cG2-xT-SKm" firstAttribute="firstBaseline" secondItem="1Qc-tg-ECM" secondAttribute="firstBaseline" id="8Ri-gd-grf"/>
                             <constraint firstItem="1Qc-tg-ECM" firstAttribute="trailing" secondItem="WNP-iD-2ka" secondAttribute="trailing" id="9Bk-sn-DFa"/>
+                            <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="ZgS-b3-wRU" secondAttribute="bottom" constant="20" id="9wR-VM-cMy"/>
                             <constraint firstItem="1Qc-tg-ECM" firstAttribute="top" secondItem="WNP-iD-2ka" secondAttribute="bottom" constant="13" id="EYe-tU-GAM"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="top" secondItem="4w5-b0-hPJ" secondAttribute="bottom" constant="14" id="HUM-mP-LiA"/>
                             <constraint firstItem="Ixz-tD-mtt" firstAttribute="top" secondItem="1Qc-tg-ECM" secondAttribute="bottom" constant="82" id="HcX-9f-WiX"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="centerX" secondItem="hnL-Eg-lHy" secondAttribute="centerX" id="Hs2-BQ-ahO"/>
                             <constraint firstItem="bb0-Ps-Q9H" firstAttribute="leading" secondItem="4w5-b0-hPJ" secondAttribute="leading" id="JW2-XF-39j"/>
                             <constraint firstItem="cG2-xT-SKm" firstAttribute="top" secondItem="1Qc-tg-ECM" secondAttribute="top" id="KLc-AW-ogp"/>
-                            <constraint firstAttribute="bottom" secondItem="ZgS-b3-wRU" secondAttribute="bottom" constant="20" symbolic="YES" id="Ne3-ov-BlK"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="leading" secondItem="bb0-Ps-Q9H" secondAttribute="leading" id="RQa-Sv-SIR"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="centerX" secondItem="4w5-b0-hPJ" secondAttribute="centerX" id="Uu0-f8-dKt"/>
                             <constraint firstItem="drN-vN-b8O" firstAttribute="top" secondItem="Sxp-Wm-mTO" secondAttribute="bottom" constant="27" id="VvL-9X-m3t"/>
                             <constraint firstItem="1Qc-tg-ECM" firstAttribute="centerY" secondItem="TN4-yW-pkx" secondAttribute="centerY" id="WnL-cy-RfZ"/>
+                            <constraint firstItem="ZgS-b3-wRU" firstAttribute="leading" secondItem="hnL-Eg-lHy" secondAttribute="leadingMargin" id="XCQ-tt-9ke"/>
                             <constraint firstItem="1Qc-tg-ECM" firstAttribute="leading" secondItem="TN4-yW-pkx" secondAttribute="trailing" constant="30" id="a98-rQ-gcR"/>
                             <constraint firstItem="WNP-iD-2ka" firstAttribute="trailing" secondItem="bb0-Ps-Q9H" secondAttribute="trailing" id="b8G-j9-GdT"/>
-                            <constraint firstItem="ZgS-b3-wRU" firstAttribute="leading" secondItem="hnL-Eg-lHy" secondAttribute="leadingMargin" id="bsk-zT-KZp"/>
                             <constraint firstItem="4w5-b0-hPJ" firstAttribute="top" secondItem="drN-vN-b8O" secondAttribute="bottom" constant="33" id="c5g-gq-CFp"/>
                             <constraint firstItem="TN4-yW-pkx" firstAttribute="centerX" secondItem="WNP-iD-2ka" secondAttribute="centerX" id="gfr-2l-mPL"/>
                             <constraint firstItem="cG2-xT-SKm" firstAttribute="baseline" secondItem="1Qc-tg-ECM" secondAttribute="baseline" id="kbR-AI-8ld"/>
@@ -301,7 +301,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AD6756BB-1748-4EEC-8BA6-345FDCDCEB5C" width="50" height="50">
+        <image name="116E6374-C242-4F64-957D-6844CC7A9D94" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

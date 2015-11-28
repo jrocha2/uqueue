@@ -54,6 +54,11 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             print("Could not fetch \(error), \(error.userInfo)")
         }
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController!.toolbarHidden = true
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
