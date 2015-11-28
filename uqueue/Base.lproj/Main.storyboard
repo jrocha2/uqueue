@@ -46,7 +46,7 @@
             </objects>
             <point key="canvasLocation" x="918" y="-945"/>
         </scene>
-        <!--Playlists-->
+        <!--UQueue-->
         <scene sceneID="Gwr-hR-5zj">
             <objects>
                 <viewController id="eHI-1P-mh4" customClass="UserPlaylistViewController" customModule="uqueue" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ad0-cV-3eu" secondAttribute="trailing" id="TRW-rr-VRY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Playlists" id="wcj-v3-p4F">
+                    <navigationItem key="navigationItem" title="UQueue" id="wcj-v3-p4F">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WMM-lE-Ej1">
                             <connections>
                                 <action selector="addPlaylist:" destination="eHI-1P-mh4" id="0wI-VX-VQW"/>
@@ -114,7 +114,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-b0-hPJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-b0-hPJ">
                                 <rect key="frame" x="185" y="360" width="230" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -125,7 +125,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-Ps-Q9H">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-Ps-Q9H">
                                 <rect key="frame" x="185" y="395" width="230" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -135,7 +135,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-iD-2ka">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNP-iD-2ka">
                                 <rect key="frame" x="185" y="424" width="230" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -153,15 +153,15 @@
                                     <action selector="chooseButtonPressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="z3z-KG-1gT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
                                 <rect key="frame" x="275" y="463" width="50" height="50"/>
                                 <animations/>
-                                <state key="normal" image="9E3F4F15-EBDE-4E02-8CAE-C865112DC1E9"/>
+                                <state key="normal" image="DCB175FB-C5CA-4FE3-9F27-79FAAF576DBD"/>
                                 <connections>
                                     <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG2-xT-SKm">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG2-xT-SKm">
                                 <rect key="frame" x="175" y="458" width="60" height="60"/>
                                 <animations/>
                                 <constraints>
@@ -180,7 +180,7 @@
                                     <segue destination="1V2-1G-rFh" kind="show" identifier="queueSegue" customClass="CustomSegue" customModule="uqueue" customModuleProvider="target" id="AYF-bu-IqG"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="drN-vN-b8O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drN-vN-b8O">
                                 <rect key="frame" x="136" y="47" width="329" height="280"/>
                                 <animations/>
                                 <constraints>
@@ -188,7 +188,7 @@
                                     <constraint firstAttribute="height" constant="280" id="vwn-Ho-g2S"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-tg-ECM">
                                 <rect key="frame" x="355" y="458" width="60" height="60"/>
                                 <animations/>
                                 <state key="normal" image="nextImage"/>
@@ -319,7 +319,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="9E3F4F15-EBDE-4E02-8CAE-C865112DC1E9" width="50" height="50">
+        <image name="DCB175FB-C5CA-4FE3-9F27-79FAAF576DBD" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -495,7 +495,7 @@ NiRm/zYkZv82JGb/AA4BAAADAAAAAQAyAAABAQADAAAAAQAyAAABAgADAAAABAAAJ8YBAwADAAAAAQAB
 AAABBgADAAAAAQACAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAy
 AAABFwAEAAAAAQAAJxABHAADAAAAAQABAAABUgADAAAAAQACAAABUwADAAAABAAAJ86HcwAHAAAMSAAA
 J9YAAAAAAAgACAAIAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFj
-c3BNU0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAA
+c3BNU0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAABAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0
 cHQAAAHwAAAAFGJrcHQAAAIEAAAAFHJYWVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRt
 bmQAAAJUAAAAcGRtZGQAAALEAAAAiHZ1ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAAFG1l
