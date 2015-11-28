@@ -36,14 +36,13 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
         
         myPlayer.play()
+        myPlayer.pause()
         currentSong = myPlayer.nowPlayingItem
     
         // Makes sure current info stays up to day if song ever changes
         myPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentInfo", name: MPMusicPlayerControllerPlaybackStateDidChangeNotification, object: nil)
-        
-        myPlayer.pause()
     }
     
     // Choose a song to add to the queue
@@ -116,6 +115,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
             let svc = segue.destinationViewController as! QueueViewController;
             svc.currentPlaylist = currentPlaylist
             svc.currentlyPlaying = myPlayer.indexOfNowPlayingItem
+            svc.myPlayer = myPlayer
         }
     }
 

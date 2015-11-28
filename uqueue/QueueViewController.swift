@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import MediaPlayer
 import CoreData
 import Firebase
 
 class QueueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var myPlayer = MPMusicPlayerController()
     var retrievedPlaylists = [NSManagedObject]()
     var currentPlaylist:UserPlaylist?
     var currentlyPlaying:Int?
+    var newSongSelected = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,6 +31,10 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         
         self.navigationController!.toolbarHidden = false;
+        
+        myPlayer.beginGeneratingPlaybackNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentSong", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,9 +71,44 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if indexPath.row == currentlyPlaying! {
             cell.textLabel?.textColor = UIColor.greenColor()
+        }else{
+            cell.textLabel?.textColor = UIColor.blackColor()
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        var newQueue = [MPMediaItem]()
+        
+        for (var i = row; i < currentPlaylist!.songs.count; i++) {
+            newQueue.append(currentPlaylist!.songs[i])
+        }
+        for (var i = 0; i < row; i++) {
+            newQueue.append(currentPlaylist!.songs[i])
+        }
+        
+        currentlyPlaying = row
+        newSongSelected = true
+        myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: newQueue))
+        myPlayer.play()
+        
+    }
+    
+    func updateCurrentSong() {
+        if newSongSelected {
+            newSongSelected = false
+        }else{
+            if currentlyPlaying == currentPlaylist!.songs.count-1 {
+                currentlyPlaying = 0
+            }else{
+                currentlyPlaying!++
+            }
+        }
+        tableView.reloadData()
     }
     
     // Brings up options when user presses save at the bottom of viewing current queue
