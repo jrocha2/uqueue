@@ -81,7 +81,7 @@ class AuthenticationViewController: UIViewController {
                 
                 let friendObjects = result["data"] as! [NSDictionary]
                 for friend in friendObjects {
-                    StoredPlaylists.sharedInstance.userFriendsList[friend["name"] as! String] = friend["id"] as? String
+                    StoredPlaylists.sharedInstance.userFriendsList[friend["name"] as! String] = "facebook:" + (friend["id"] as! String)
                 }
                 print("Friends: \(StoredPlaylists.sharedInstance.userFriendsList)")
                 

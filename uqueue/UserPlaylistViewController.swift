@@ -19,8 +19,11 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     
     let myPicker = MPMediaPickerController(mediaTypes: MPMediaType.Music)
     let textCellIdentifier = "textCell"
+    let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     var newPlaylistName:String?
     var selectedPlaylist:String?
+    
+    var friendsCurrentlySharing = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,19 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             StoredPlaylists.sharedInstance.userPlaylists[title!] = UserPlaylist(name: title!, contents: songs!)
         }
         
+        friendsCurrentlySharing.removeAll()
+        for friend in StoredPlaylists.sharedInstance.userFriendsList {
+            let uid = friend.1
+            let friendRef = myRootRef.childByAppendingPath(uid).childByAppendingPath("sharedWith")
+            friendRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                for child in snapshot.children {
+                    if (child.value as String) == StoredPlaylists.sharedInstance.userFacebookID {
+                        self.friendsCurrentlySharing.append(uid)
+                    }
+                }
+                self.tableView.reloadData()
+            })
+        }
         
 
     }
@@ -72,17 +88,25 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         if section == 0 {
             return StoredPlaylists.sharedInstance.userPlaylists.count
         }else{
-            return 0
+            return friendsCurrentlySharing.count
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let row = indexPath.row
         
         if indexPath.section == 0 {
-            let row = indexPath.row
             cell.textLabel?.text = StoredPlaylists.sharedInstance.playlistNames[row]
+        } else {
+            let friendID = friendsCurrentlySharing[row]
+            for friend in StoredPlaylists.sharedInstance.userFriendsList {
+                if friend.1 == friendID {
+                    cell.textLabel?.text = friend.0
+                }
+            }
         }
+        
         return cell
     }
     
