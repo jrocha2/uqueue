@@ -9,6 +9,7 @@
 import UIKit
 import MediaPlayer
 import CoreData
+import Firebase
 
 class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MPMediaPickerControllerDelegate {
 
@@ -54,6 +55,8 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             StoredPlaylists.sharedInstance.playlistNames.append(title!)
             StoredPlaylists.sharedInstance.userPlaylists[title!] = UserPlaylist(name: title!, contents: songs!)
         }
+        
+        
 
     }
 
@@ -62,27 +65,45 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StoredPlaylists.sharedInstance.userPlaylists.count
+        if section == 0 {
+            return StoredPlaylists.sharedInstance.userPlaylists.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
-        let row = indexPath.row
-        cell.textLabel?.text = StoredPlaylists.sharedInstance.playlistNames[row]
+        if indexPath.section == 0 {
+            let row = indexPath.row
+            cell.textLabel?.text = StoredPlaylists.sharedInstance.playlistNames[row]
+        }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "My Playlists"
+        }else{
+            return "Friends Broadcasting"
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
-        selectedPlaylist = cell.textLabel!.text
-        performSegueWithIdentifier("selectedPlaylist", sender: nil)
+        if indexPath.section == 0 {
+            selectedPlaylist = cell.textLabel!.text
+            performSegueWithIdentifier("selectedPlaylist", sender: nil)
+        }else{
+            performSegueWithIdentifier("selectedFriend", sender: nil)
+        }
     }
     
     @IBAction func addPlaylist(sender: UIBarButtonItem) {

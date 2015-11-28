@@ -58,13 +58,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ad0-cV-3eu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ad0-cV-3eu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="T15-xO-9O0">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T15-xO-9O0" id="o2O-ak-oU4">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -72,9 +72,6 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <connections>
-                                            <segue destination="Q0s-3C-AAc" kind="custom" identifier="selectedPlaylist" trigger="accessoryAction" customClass="CustomSegue" customModule="uqueue" customModuleProvider="target" id="OWr-Zy-lXO"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -97,6 +94,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Ad0-cV-3eu" id="krM-fZ-H6q"/>
+                        <segue destination="Q0s-3C-AAc" kind="show" identifier="selectedPlaylist" id="bry-eH-fPJ"/>
+                        <segue destination="PPU-6x-nc9" kind="show" identifier="selectedFriend" id="YQA-JM-rDd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3S-ht-cEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,7 +156,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-yW-pkx">
                                 <rect key="frame" x="275" y="463" width="50" height="50"/>
                                 <animations/>
-                                <state key="normal" image="116E6374-C242-4F64-957D-6844CC7A9D94"/>
+                                <state key="normal" image="9E3F4F15-EBDE-4E02-8CAE-C865112DC1E9"/>
                                 <connections>
                                     <action selector="playOrPausePressed" destination="Q0s-3C-AAc" eventType="touchUpInside" id="rZT-WH-nCq"/>
                                 </connections>
@@ -240,6 +239,25 @@
             </objects>
             <point key="canvasLocation" x="2416" y="-945"/>
         </scene>
+        <!--Broadcasted View Controller-->
+        <scene sceneID="hF1-sq-vaq">
+            <objects>
+                <viewController id="PPU-6x-nc9" customClass="BroadcastedViewController" customModule="uqueue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2oZ-I8-bWB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cev-yR-ezX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MMs-FW-0pP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VSd-Jt-T3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2416" y="-160"/>
+        </scene>
         <!--Queue View Controller-->
         <scene sceneID="Krt-mt-u7T">
             <objects>
@@ -258,7 +276,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" id="gcV-07-wop">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gcV-07-wop" id="i8p-2f-Jzo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -301,7 +319,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="116E6374-C242-4F64-957D-6844CC7A9D94" width="50" height="50">
+        <image name="9E3F4F15-EBDE-4E02-8CAE-C865112DC1E9" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
