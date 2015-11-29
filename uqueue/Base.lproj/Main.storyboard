@@ -294,7 +294,7 @@
             </objects>
             <point key="canvasLocation" x="2416" y="-160"/>
         </scene>
-        <!--Playlist-->
+        <!--Title-->
         <scene sceneID="Krt-mt-u7T">
             <objects>
                 <viewController id="1V2-1G-rFh" customClass="QueueViewController" customModule="uqueue" customModuleProvider="target" sceneMemberID="viewController">
@@ -341,7 +341,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Playlist" id="8Ij-8R-bBv">
+                    <navigationItem key="navigationItem" title="Title" id="8Ij-8R-bBv">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="yeO-VA-L3a">
                             <connections>
                                 <action selector="addSong:" destination="1V2-1G-rFh" id="TT5-lW-hf8"/>
@@ -350,6 +350,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navBar" destination="8Ij-8R-bBv" id="SHh-lo-e0o"/>
                         <outlet property="tableView" destination="nQ9-6c-riD" id="Zv7-fa-Ghm"/>
                     </connections>
                 </viewController>

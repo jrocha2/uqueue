@@ -37,8 +37,13 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    var currentPlaylistTitle : String!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        navBar.title = currentPlaylistTitle
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
