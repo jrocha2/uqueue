@@ -11,7 +11,7 @@
             <objects>
                 <navigationController id="Jgo-Tu-hab" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Fd-R9-tKd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="7Fd-R9-tKd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
