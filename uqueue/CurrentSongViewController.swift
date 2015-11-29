@@ -18,6 +18,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     var currentPlaylist:UserPlaylist?
     var modifiedQueue:[MPMediaItem]?
     var currentSong:MPMediaItem?
+    var timer = NSTimer()
     
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var playAndPauseButton: UIButton!
@@ -46,7 +47,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     }
     
     // Choose a song to add to the queue
-    @IBAction func chooseButtonPressed() {
+    @IBAction func chooseButtonPressed(sender: AnyObject) {
         selectSong()
     }
     
@@ -106,10 +107,54 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         } else {
             playAndPauseButton.setImage(UIImage(named: "pausebutton"), forState: UIControlState.Normal)
         }
+        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: "timerFired:", userInfo: nil, repeats: true)
+        self.timer.tolerance = 0.1
     }
     
+    @IBOutlet weak var labelElapsed: UILabel!
+    @IBOutlet weak var labelRemaining: UILabel!
     
+    func timerFired(_:AnyObject) {
+        if let currentTrack = MPMusicPlayerController.systemMusicPlayer().nowPlayingItem {
+            let trackDuration = currentTrack.valueForProperty(MPMediaItemPropertyPlaybackDuration) as! Int
+            let trackElapsed = myPlayer.currentPlaybackTime
+            let trackElapsedMinutes = Int(trackElapsed / 60)
+            let trackElapsedSeconds = Int(trackElapsed % 60)
+            if trackElapsedSeconds < 10 {
+                
+                labelElapsed.text = "\(trackElapsedMinutes):0\(trackElapsedSeconds)"
+                
+            } else {
+                
+                labelElapsed.text = "\(trackElapsedMinutes):\(trackElapsedSeconds)"
+                
+            }
+            let trackRemaining = trackDuration - Int(trackElapsed)
+            let trackRemainingMinutes = trackRemaining / 60
+            let trackRemainingSeconds = trackRemaining % 60
+            if trackRemainingSeconds < 10 {
+                
+                labelRemaining.text = "\(trackRemainingMinutes):0\(trackRemainingSeconds)"
+                
+            } else {
+                
+                
+                labelRemaining.text = "\(trackRemainingMinutes):\(trackRemainingSeconds)"
+            }
+            
+            sliderTime.maximumValue = Float(trackDuration)
+            sliderTime.value = Float(trackElapsed)
+        }
+        
+    }
+    
+    @IBOutlet weak var sliderTime: UISlider!
 
+    @IBAction func sliderTimeChanged(sender: AnyObject) {
+        myPlayer.currentPlaybackTime = NSTimeInterval(sliderTime.value)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "queueSegue") {
             let svc = segue.destinationViewController as! QueueViewController;

@@ -181,7 +181,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func broadcastButtonPressed(sender: AnyObject!) {
         broadcastPlaylist(currentPlaylist!)
-        
         let alertController = UIAlertController(title: nil, message:
             "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default,handler: nil))
