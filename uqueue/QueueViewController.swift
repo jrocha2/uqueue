@@ -43,7 +43,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        self.navigationController!.toolbarHidden = false;
+        //self.navigationController!.toolbarHidden = false;
         
         navBar.title = currentPlaylistTitle
         
