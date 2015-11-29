@@ -22,11 +22,14 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     var newPlaylistName:String?
     var selectedPlaylist:String?
+    var navColor = UIColor(colorLiteralRed: 66, green: 150, blue: 106, alpha: 1)
     
     var friendsCurrentlySharing = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.backgroundColor = navColor
         
         myPicker.delegate = self
         myPicker.allowsPickingMultipleItems = true
