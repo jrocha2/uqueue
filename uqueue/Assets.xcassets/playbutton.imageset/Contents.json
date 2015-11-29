@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pause button.png",
+      "filename" : "playButton.png",
       "scale" : "1x"
     },
     {

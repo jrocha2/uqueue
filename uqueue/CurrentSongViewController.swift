@@ -26,6 +26,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var titleLabel: UINavigationItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +97,7 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
     
     // Keeps the displayed info up to date
     func updateCurrentInfo() {
+        titleLabel.title = currentPlaylist?.title
         currentSong = myPlayer.nowPlayingItem
         trackTitleLabel.text = currentSong?.title
         albumTitleLabel.text = currentSong?.albumTitle

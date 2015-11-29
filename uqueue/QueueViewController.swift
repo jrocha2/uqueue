@@ -213,6 +213,9 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
     }
 
+    @IBAction func addSong(sender: AnyObject) {
+       
+    }
     /*
     // MARK: - Navigation
 
