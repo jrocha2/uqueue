@@ -30,7 +30,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.navigationController!.toolbarHidden = false;
+        
         
         myPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentSong", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
@@ -42,6 +42,8 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        self.navigationController!.toolbarHidden = false;
         
         navBar.title = currentPlaylistTitle
         
@@ -217,7 +219,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
         userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
     }
-
+    
     @IBAction func addSong(sender: AnyObject) {
        
     }

@@ -85,7 +85,9 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-uqueueUITests/Firebase.framework"
+  install_framework "Pods-uqueueUITests/MGSwipeTableCell.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-uqueueUITests/Firebase.framework"
+  install_framework "Pods-uqueueUITests/MGSwipeTableCell.framework"
 fi

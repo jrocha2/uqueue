@@ -4,6 +4,7 @@
 use_frameworks!
 
 pod 'Firebase', '>= 2.4.3'
+pod 'MGSwipeTableCell'
 
 target 'uqueue' do
 

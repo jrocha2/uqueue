@@ -1,10 +1,13 @@
 PODS:
   - Firebase (2.4.3)
+  - MGSwipeTableCell (1.5.3)
 
 DEPENDENCIES:
   - Firebase (>= 2.4.3)
+  - MGSwipeTableCell
 
 SPEC CHECKSUMS:
   Firebase: 48179995b561e2262c5d4060ecdffca45fbbff8b
+  MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
 
 COCOAPODS: 0.39.0

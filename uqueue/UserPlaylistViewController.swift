@@ -22,6 +22,7 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     var newPlaylistName:String?
     var selectedPlaylist:String?
+    var selectedFriend:String?
     var navColor = UIColor(colorLiteralRed: 66, green: 150, blue: 106, alpha: 1)
     
     var friendsCurrentlySharing = [String]()
@@ -129,6 +130,7 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             selectedPlaylist = cell.textLabel!.text
             performSegueWithIdentifier("selectedPlaylist", sender: nil)
         }else{
+            selectedFriend = cell.textLabel?.text
             performSegueWithIdentifier("selectedFriend", sender: nil)
         }
     }
@@ -192,8 +194,11 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == "selectedPlaylist" {
             let svc = segue.destinationViewController as! CurrentSongViewController
             svc.currentPlaylistName = selectedPlaylist
+        } else if segue.identifier == "selectedFriend" {
+            let svc = segue.destinationViewController as! BroadcastedViewController
+            svc.friend = selectedFriend
         }
-
+        
     }
     
     

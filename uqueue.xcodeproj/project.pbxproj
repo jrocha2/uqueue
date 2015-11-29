@@ -25,6 +25,8 @@
 		E7A1C0741BEFEEFC000A5EA0 /* StoredPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */; };
 		E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7A1C0751BF163AC000A5EA0 /* uqueue.xcdatamodeld */; };
 		E7F525601C0A3259008A4E90 /* BroadcastedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5255F1C0A3259008A4E90 /* BroadcastedViewController.swift */; };
+		E7F525661C0AF04E008A4E90 /* SongTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F525651C0AF04E008A4E90 /* SongTableCell.swift */; };
+		E7F525681C0AF45A008A4E90 /* InviteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F525671C0AF45A008A4E90 /* InviteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		E7A1C0731BEFEEFC000A5EA0 /* StoredPlaylists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredPlaylists.swift; sourceTree = "<group>"; };
 		E7A1C0761BF163AC000A5EA0 /* uqueue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = uqueue.xcdatamodel; sourceTree = "<group>"; };
 		E7F5255F1C0A3259008A4E90 /* BroadcastedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastedViewController.swift; sourceTree = "<group>"; };
+		E7F525651C0AF04E008A4E90 /* SongTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableCell.swift; sourceTree = "<group>"; };
+		E7F525671C0AF45A008A4E90 /* InviteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +145,10 @@
 				E7937CCE1C02A52D00EC46AA /* AuthenticationViewController.swift */,
 				E71901441BEAEFDE007D7641 /* UserPlaylistViewController.swift */,
 				E7F5255F1C0A3259008A4E90 /* BroadcastedViewController.swift */,
+				E7F525651C0AF04E008A4E90 /* SongTableCell.swift */,
 				E744399D1BCA5F57008A9873 /* CurrentSongViewController.swift */,
 				E744399F1BCD6A1A008A9873 /* QueueViewController.swift */,
+				E7F525671C0AF45A008A4E90 /* InviteTableViewController.swift */,
 				E76668541BBD741900B7E1A1 /* Main.storyboard */,
 				E76668591BBD741900B7E1A1 /* LaunchScreen.storyboard */,
 				E76668571BBD741900B7E1A1 /* Assets.xcassets */,
@@ -252,7 +258,7 @@
 				TargetAttributes = {
 					E766684C1BBD741900B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 47J734W9F8;
+						DevelopmentTeam = 4C9VKWQ9S7;
 					};
 					E76668601BBD741A00B7E1A1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -366,9 +372,11 @@
 			files = (
 				E7A1C0741BEFEEFC000A5EA0 /* StoredPlaylists.swift in Sources */,
 				E74439A01BCD6A1A008A9873 /* QueueViewController.swift in Sources */,
+				E7F525681C0AF45A008A4E90 /* InviteTableViewController.swift in Sources */,
 				E76668511BBD741900B7E1A1 /* AppDelegate.swift in Sources */,
 				E7F525601C0A3259008A4E90 /* BroadcastedViewController.swift in Sources */,
 				E744399E1BCA5F57008A9873 /* CurrentSongViewController.swift in Sources */,
+				E7F525661C0AF04E008A4E90 /* SongTableCell.swift in Sources */,
 				E7937CCF1C02A52D00EC46AA /* AuthenticationViewController.swift in Sources */,
 				E71901451BEAEFDE007D7641 /* UserPlaylistViewController.swift in Sources */,
 				E7A1C0771BF163AC000A5EA0 /* uqueue.xcdatamodeld in Sources */,
