@@ -16,8 +16,8 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     var friendPlaylist = [String]()
     var friendSongRatings = [(Int,Int)]()
     var ratingHistory = [String:(Int,Int)]()
-    var dislikeColor = UIColor(red: 249/255, green: 34/255, blue: 36/255, alpha: 1)
-    var likeColor = UIColor(red: 14/255, green: 96/255, blue: 247/255, alpha: 1)
+    var dislikeColor = UIColor(red: 253/255, green: 59/255, blue: 47/255, alpha: 1)
+    var likeColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +35,9 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        var friendName = friend.componentsSeparatedByString(" ")
+        navBar.title = friendName[0] + "'s Playlist"
         
         let friendRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFriendsList[friend])
         
@@ -69,8 +72,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         let dislikeRef = friendRef.childByAppendingPath("playlist").childByAppendingPath(songName).childByAppendingPath("dislikes")
         let currentLikeCount = self.friendSongRatings[row].0
         let currentDislikeCount = self.friendSongRatings[row].1
-        
-        let likeButton = MGSwipeButton(title: "Like", backgroundColor: likeColor, callback: {
+        let likeButton = MGSwipeButton(title: "  Like", icon: UIImage(named: "likeIcon") , backgroundColor: likeColor, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             if self.ratingHistory[songName] == nil {
@@ -92,9 +94,9 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             return true
         })
         
-        let dislikeButton = MGSwipeButton(title: "Dislike", backgroundColor: dislikeColor, callback: {
+        let dislikeButton = MGSwipeButton(title: "  Dislike", icon: UIImage(named: "dislikeIcon") , backgroundColor: dislikeColor, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-            
+
             if self.ratingHistory[songName] == nil {
                 self.ratingHistory[songName] = (0,1)
                 dislikeRef.setValue(currentDislikeCount+1)
@@ -115,12 +117,19 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             return true
         })
         
+        if currentLikeCount == 0 && currentDislikeCount == 0{
+            cell.likeLabel.textColor = UIColor.whiteColor()
+            cell.dislikeLabel.textColor = UIColor.whiteColor()
+            
+        } else{
+            cell.dislikeLabel.textColor = dislikeColor
+            cell.likeLabel.textColor = likeColor
+        }
+        
         cell.rightButtons = [dislikeButton, likeButton]
         cell.titleLabel.text = songName
         cell.likeLabel.text = String(friendSongRatings[row].0)
-        cell.likeLabel.textColor = likeColor
         cell.dislikeLabel.text = String(friendSongRatings[row].1)
-        cell.dislikeLabel.textColor = dislikeColor
         
         return cell
     }

@@ -23,7 +23,6 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     var newPlaylistName:String?
     var selectedPlaylist:String?
     var selectedFriend:String?
-    var navColor = UIColor(colorLiteralRed: 66, green: 150, blue: 106, alpha: 1)
     
     var friendsCurrentlySharing = [String]()
     
