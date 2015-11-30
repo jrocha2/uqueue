@@ -30,8 +30,6 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.backgroundColor = navColor
-        
         myPicker.delegate = self
         myPicker.allowsPickingMultipleItems = true
 
@@ -63,20 +61,7 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             StoredPlaylists.sharedInstance.userPlaylists[title!] = UserPlaylist(name: title!, contents: songs!)
         }
         
-        friendsCurrentlySharing.removeAll()
-        for friend in StoredPlaylists.sharedInstance.userFriendsList {
-            let uid = friend.1
-            let friendRef = myRootRef.childByAppendingPath(uid).childByAppendingPath("sharedWith")
-            friendRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-                for child in snapshot.children {
-                    if (child.value as String) == StoredPlaylists.sharedInstance.userFacebookID {
-                        self.friendsCurrentlySharing.append(uid)
-                    }
-                }
-                self.tableView.reloadData()
-            })
-        }
-        
+        updateBroadcastingFriends()
 
     }
 
@@ -225,6 +210,29 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
+    }
+    
+    func updateBroadcastingFriends() {
+        var newFriends = [String]()
+        var friendCount = 0
+        
+        for friend in StoredPlaylists.sharedInstance.userFriendsList {
+            friendCount++
+            let uid = friend.1
+            let friendRef = myRootRef.childByAppendingPath(uid).childByAppendingPath("sharedWith")
+            friendRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                for child in snapshot.children {
+                    if (child.value as String) == StoredPlaylists.sharedInstance.userFacebookID {
+                        newFriends.append(uid)
+                    }
+                    if friendCount == StoredPlaylists.sharedInstance.userFriendsList.count {
+                        self.friendsCurrentlySharing = newFriends
+                        self.tableView.reloadData()
+                    }
+                }
+            })
+        }
+
     }
 }
 
