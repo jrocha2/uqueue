@@ -16,6 +16,8 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     var friendPlaylist = [String]()
     var friendSongRatings = [(Int,Int)]()
     var ratingHistory = [String:(Int,Int)]()
+    var dislikeColor = UIColor(red: 249/255, green: 34/255, blue: 36/255, alpha: 1)
+    var likeColor = UIColor(red: 14/255, green: 96/255, blue: 247/255, alpha: 1)
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -66,7 +68,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         let currentLikeCount = self.friendSongRatings[row].0
         let currentDislikeCount = self.friendSongRatings[row].1
         
-        let likeButton = MGSwipeButton(title: "Like", backgroundColor: UIColor.greenColor(), callback: {
+        let likeButton = MGSwipeButton(title: "Like", backgroundColor: likeColor, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             if self.ratingHistory[songName] == nil {
@@ -88,7 +90,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             return true
         })
         
-        let dislikeButton = MGSwipeButton(title: "Dislike", backgroundColor: UIColor.redColor(), callback: {
+        let dislikeButton = MGSwipeButton(title: "Dislike", backgroundColor: dislikeColor, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             if self.ratingHistory[songName] == nil {
@@ -114,9 +116,9 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         cell.rightButtons = [dislikeButton, likeButton]
         cell.titleLabel.text = songName
         cell.likeLabel.text = String(friendSongRatings[row].0)
-        cell.likeLabel.textColor = UIColor.greenColor()
+        cell.likeLabel.textColor = likeColor
         cell.dislikeLabel.text = String(friendSongRatings[row].1)
-        cell.dislikeLabel.textColor = UIColor.redColor()
+        cell.dislikeLabel.textColor = dislikeColor
         
         return cell
     }
