@@ -36,8 +36,8 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        
-        navBar.title = friend + "'s Playlist"
+        var friendName = friend.componentsSeparatedByString(" ")
+        navBar.title = friendName[0] + "'s Playlist"
         
         let friendRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFriendsList[friend])
         
