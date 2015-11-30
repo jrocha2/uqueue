@@ -162,7 +162,14 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
                 friendSongRatings.append((likes,dislikes))
             }
         }else{
-            self.navigationController!.popViewControllerAnimated(true)
+            let alertController = UIAlertController(title: nil, message:
+            "This playlist is no longer being broadcasted" , preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Back to Main Menu",
+                style: .Default) { (action: UIAlertAction) -> Void in
+                    self.navigationController!.popViewControllerAnimated(true)
+            })
+            presentViewController(alertController, animated: true, completion: nil)
+            
         }
         
         tableView.reloadData()
