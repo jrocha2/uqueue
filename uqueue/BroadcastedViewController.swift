@@ -138,18 +138,31 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         friendPlaylist.removeAll()
         friendSongRatings.removeAll()
         
+        var stillSharingWithMe = false
         let playlistSnap = snap.childSnapshotForPath("playlist")
         let orderSnap = snap.childSnapshotForPath("songOrder")
+        let sharedSnap = snap.childSnapshotForPath("sharedWith")
         
-        for child in orderSnap.children {
-            let songName = child.value as String
-            let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")
-            let likes = likesSnap.value as! Int
-            let dislikesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
-            let dislikes = dislikesSnap.value as! Int
-            
-            friendPlaylist.append(songName)
-            friendSongRatings.append((likes,dislikes))
+        for child in sharedSnap.children {
+            if child.value as String == StoredPlaylists.sharedInstance.userFacebookID {
+                stillSharingWithMe = true
+                break
+            }
+        }
+        
+        if stillSharingWithMe {
+            for child in orderSnap.children {
+                let songName = child.value as String
+                let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")
+                let likes = likesSnap.value as! Int
+                let dislikesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
+                let dislikes = dislikesSnap.value as! Int
+                
+                friendPlaylist.append(songName)
+                friendSongRatings.append((likes,dislikes))
+            }
+        }else{
+            self.navigationController!.popViewControllerAnimated(true)
         }
         
         tableView.reloadData()

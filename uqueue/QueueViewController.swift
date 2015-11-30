@@ -207,9 +207,9 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var broadcastButton: UIBarButtonItem!
     
     @IBAction func broadcastButtonPressed(sender: AnyObject!) {
-        broadcastPlaylist(currentPlaylist!)
         
         if broadcastButton.title == "Broadcast"{
+            broadcastPlaylist(currentPlaylist!)
             broadcastButton.title = "Stop Broadcasting"
             let alertController = UIAlertController(title: nil, message:
                 "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
@@ -217,6 +217,9 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             self.presentViewController(alertController, animated: true, completion: nil)
         } else{
+            let sharedRef = Firebase(url: "https://uqueue.firebaseio.com").childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID).childByAppendingPath("sharedWith")
+            sharedRef.removeValue()
+            
             broadcastButton.title = "Broadcast"
             let alertController2 = UIAlertController(title: nil, message:
                 "Your playlist is no longer broadcasting." , preferredStyle: UIAlertControllerStyle.Alert)
