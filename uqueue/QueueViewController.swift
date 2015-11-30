@@ -51,6 +51,15 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //self.navigationController!.toolbarHidden = false;
         
+        if broadcastButton.title == "Broadcast"{
+            inviteButton.enabled = false
+            inviteButton.tintColor = UIColor.clearColor()
+        } else {
+            inviteButton.enabled = true
+            inviteButton.tintColor = UIColor.whiteColor()
+        }
+
+        
         navBar.title = currentPlaylistTitle
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -205,12 +214,15 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBOutlet weak var broadcastButton: UIBarButtonItem!
+    @IBOutlet weak var inviteButton: UIBarButtonItem!
     
     @IBAction func broadcastButtonPressed(sender: AnyObject!) {
         
         if broadcastButton.title == "Broadcast"{
             broadcastPlaylist(currentPlaylist!)
             broadcastButton.title = "Stop Broadcasting"
+            inviteButton.enabled = true
+            inviteButton.tintColor = UIColor.whiteColor()
             let alertController = UIAlertController(title: nil, message:
                 "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default,handler: nil))
@@ -221,6 +233,8 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             sharedRef.removeValue()
             
             broadcastButton.title = "Broadcast"
+            inviteButton.enabled = false
+            inviteButton.tintColor = UIColor.clearColor()
             let alertController2 = UIAlertController(title: nil, message:
                 "Your playlist is no longer broadcasting." , preferredStyle: UIAlertControllerStyle.Alert)
             alertController2.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
@@ -265,10 +279,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func parseFirebaseData(snap: FDataSnapshot) {
         var newRatings = [(Int,Int)]()
-        
-        let playlistSnap = snap.childSnapshotForPath("playlist")
-        //let orderSnap = snap.childSnapshotForPath("songOrder")
-        
         
         for song in currentPlaylist!.songs {
             var songName = song.title
