@@ -1,5 +1,4 @@
 # uqueue  
 ####Known Bugs:  
-- Creating a new playlist while a friend is broadcasting causes a seg fault
-- Toolbar in QueueViewController won't adhere to rules
-- Tapping a new song in QueueViewController no longer plays correct one
+- Adding a song and rebroadcasting will seg fault any followers
+- Opening the same playlist on launch that was last used will cause the pause button to appear 
