@@ -18,11 +18,18 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     var currentPlaylist:UserPlaylist?
     var currentlyPlaying:Int?
     var newSongSelected = false
+    var songRatings = [(Int,Int)]()
+    var broadcastingCurrentPlaylist = false
+    
+    var dislikeColor = UIColor(red: 249/255, green: 34/255, blue: 36/255, alpha: 1)
+    var likeColor = UIColor(red: 14/255, green: 96/255, blue: 247/255, alpha: 1)
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationItem!
+    var currentPlaylistTitle : String!
     
     let textCellIdentifier = "songCell"
-    
+    let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +37,14 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        
         myPlayer.beginGeneratingPlaybackNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"updateCurrentSong", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: nil)
         
+        for _ in currentPlaylist!.songs {
+            songRatings.append((0,0))
+        }
+
     }
-    
-    @IBOutlet weak var navBar: UINavigationItem!
-    var currentPlaylistTitle : String!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -60,6 +66,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -76,15 +83,26 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! SongTableCell
+        let row = indexPath.row
         
-        let item = currentPlaylist!.songs[indexPath.row]
-        cell.textLabel?.text = item.title
+        let item = currentPlaylist!.songs[row]
+        cell.titleLabel.text = item.title
+        cell.likeLabel.text = String(songRatings[row].0)
+        cell.dislikeLabel.text = String(songRatings[row].1)
         
-        if indexPath.row == currentlyPlaying! {
-            cell.textLabel?.textColor = UIColor.greenColor()
+        if songRatings[row].0 == 0 && songRatings[row].1 == 0 {
+            cell.likeLabel.textColor = UIColor.whiteColor()
+            cell.dislikeLabel.textColor = UIColor.whiteColor()
         }else{
-            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.likeLabel.textColor = likeColor
+            cell.dislikeLabel.textColor = dislikeColor
+        }
+        
+        if row == currentlyPlaying! {
+            cell.titleLabel.textColor = UIColor.greenColor()
+        }else{
+            cell.titleLabel.textColor = UIColor.blackColor()
         }
         
         return cell
@@ -218,6 +236,43 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
         userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
+        
+        let myRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID).childByAppendingPath("playlist")
+        
+        myRef.observeEventType(.Value, withBlock: { snapshot in
+            self.parseFirebaseData(snapshot)
+            self.tableView.reloadData()
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+    }
+    
+    func parseFirebaseData(snap: FDataSnapshot) {
+        var newRatings = [(Int,Int)]()
+        
+        let playlistSnap = snap.childSnapshotForPath("playlist")
+        //let orderSnap = snap.childSnapshotForPath("songOrder")
+        
+        
+        for song in currentPlaylist!.songs {
+            var songName = song.title
+            songName = songName!.stringByReplacingOccurrencesOfString("/", withString: "-")
+            songName = songName!.stringByReplacingOccurrencesOfString(".", withString: "")
+            songName = songName!.stringByReplacingOccurrencesOfString("#", withString: " ")
+            songName = songName!.stringByReplacingOccurrencesOfString("$", withString: " ")
+            songName = songName!.stringByReplacingOccurrencesOfString("[", withString: "(")
+            songName = songName!.stringByReplacingOccurrencesOfString("]", withString: ")")
+            
+            let likesSnap = snap.childSnapshotForPath(songName).childSnapshotForPath("likes")
+            let likes = likesSnap.value as! Int
+            let dislikesSnap = snap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
+            let dislikes = dislikesSnap.value as! Int
+            
+            newRatings.append((likes,dislikes))
+        }
+        songRatings = newRatings
+        tableView.reloadData()
+        
     }
     
     @IBAction func addSong(sender: AnyObject) {
