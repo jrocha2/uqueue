@@ -139,7 +139,9 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
                     self.newPlaylistName = enteredText
                     
                     // Open music picker
-                    self.presentViewController(self.myPicker, animated: true, completion: nil)
+                    if enteredText != "" {
+                        self.presentViewController(self.myPicker, animated: true, completion: nil)
+                    }
                 }
             })
         
