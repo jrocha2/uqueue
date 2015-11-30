@@ -280,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="2416" y="-945"/>
         </scene>
-        <!--Broadcasted View Controller-->
+        <!--Title-->
         <scene sceneID="hF1-sq-vaq">
             <objects>
                 <viewController id="PPU-6x-nc9" customClass="BroadcastedViewController" customModule="uqueue" customModuleProvider="target" sceneMemberID="viewController">
@@ -366,7 +366,9 @@
                             <constraint firstItem="CwR-8c-wlG" firstAttribute="leading" secondItem="MMs-FW-0pP" secondAttribute="leading" id="xvf-kF-OxJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="x2X-yS-qa1"/>
                     <connections>
+                        <outlet property="navBar" destination="x2X-yS-qa1" id="tcP-Di-IjA"/>
                         <outlet property="tableView" destination="CwR-8c-wlG" id="D3b-6g-TYE"/>
                     </connections>
                 </viewController>
@@ -456,7 +458,7 @@
             </objects>
             <point key="canvasLocation" x="3134" y="-945"/>
         </scene>
-        <!--Title-->
+        <!--Friends-->
         <scene sceneID="Gh7-FR-j9P">
             <objects>
                 <tableViewController id="sFd-yS-myR" customClass="InviteTableViewController" customModule="uqueue" customModuleProvider="target" sceneMemberID="viewController">
@@ -482,7 +484,7 @@
                             <outlet property="delegate" destination="sFd-yS-myR" id="TOH-nE-obR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="LF2-5H-pCX">
+                    <navigationItem key="navigationItem" title="Friends" id="LF2-5H-pCX">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ef6-IN-3c4">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="sFd-yS-myR" id="Mvq-nK-htO"/>

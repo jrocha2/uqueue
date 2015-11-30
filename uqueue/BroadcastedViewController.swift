@@ -31,6 +31,8 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
     }
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         

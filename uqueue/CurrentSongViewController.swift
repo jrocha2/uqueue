@@ -163,10 +163,8 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
             svc.currentPlaylist = currentPlaylist
             svc.currentlyPlaying = myPlayer.indexOfNowPlayingItem
             svc.myPlayer = myPlayer
+            svc.currentPlaylistTitle = currentPlaylist?.title
         }
-        var DestViewController : QueueViewController = segue.destinationViewController as! QueueViewController
-        
-        DestViewController.currentPlaylistTitle = currentPlaylist?.title
         
     }
 
