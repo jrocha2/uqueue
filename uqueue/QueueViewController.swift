@@ -92,8 +92,8 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.dislikeLabel.text = String(songRatings[row].1)
         
         if songRatings[row].0 == 0 && songRatings[row].1 == 0 {
-            cell.likeLabel.textColor = UIColor.whiteColor()
-            cell.dislikeLabel.textColor = UIColor.whiteColor()
+            cell.likeLabel.textColor = UIColor.clearColor()
+            cell.dislikeLabel.textColor = UIColor.clearColor()
         }else{
             cell.likeLabel.textColor = likeColor
             cell.dislikeLabel.textColor = dislikeColor
@@ -204,13 +204,26 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @IBOutlet weak var broadcastButton: UIBarButtonItem!
+    
     @IBAction func broadcastButtonPressed(sender: AnyObject!) {
         broadcastPlaylist(currentPlaylist!)
-        let alertController = UIAlertController(title: nil, message:
-            "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default,handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        if broadcastButton.title == "Broadcast"{
+            broadcastButton.title = "Stop Broadcasting"
+            let alertController = UIAlertController(title: nil, message:
+                "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else{
+            broadcastButton.title = "Broadcast"
+            let alertController2 = UIAlertController(title: nil, message:
+                "Your playlist is no longer broadcasting." , preferredStyle: UIAlertControllerStyle.Alert)
+            alertController2.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController2, animated: true, completion: nil)
+        }
     }
     
     func broadcastPlaylist(list: UserPlaylist) {
