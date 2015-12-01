@@ -35,11 +35,16 @@ class CurrentSongViewController: UIViewController, MPMediaPickerControllerDelega
         myPicker.allowsPickingMultipleItems = true
         
         currentPlaylist = StoredPlaylists.sharedInstance.userPlaylists[currentPlaylistName!]
-        myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
+        if currentPlaylistName != StoredPlaylists.sharedInstance.lastPlayedPlaylist {
+            myPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: currentPlaylist!.songs))
+            
+            myPlayer.play()
+            myPlayer.pause()
+        }
+        StoredPlaylists.sharedInstance.lastPlayedPlaylist = currentPlaylistName!
         
-        myPlayer.play()
-        myPlayer.pause()
         currentSong = myPlayer.nowPlayingItem
+        updateCurrentInfo()
     
         // Makes sure current info stays up to day if song ever changes
         myPlayer.beginGeneratingPlaybackNotifications()

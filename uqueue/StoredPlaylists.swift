@@ -18,4 +18,6 @@ class StoredPlaylists {
     
     var userPlaylists = [String:UserPlaylist]()
     var playlistNames = [String]()
+    
+    var lastPlayedPlaylist = String()
 }
