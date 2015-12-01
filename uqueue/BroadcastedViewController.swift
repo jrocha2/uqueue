@@ -16,6 +16,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     var friendPlaylist = [String]()
     var friendSongRatings = [(Int,Int)]()
     var ratingHistory = [String:(Int,Int)]()
+    var currentlyPlaying:Int!
     var dislikeColor = UIColor(red: 253/255, green: 59/255, blue: 47/255, alpha: 1)
     var likeColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
     
@@ -131,6 +132,12 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         cell.likeLabel.text = String(friendSongRatings[row].0)
         cell.dislikeLabel.text = String(friendSongRatings[row].1)
         
+        if row == currentlyPlaying {
+            cell.titleLabel.textColor = UIColor.greenColor()
+        }else{
+            cell.titleLabel.textColor = UIColor.blackColor()
+        }
+        
         return cell
     }
     
@@ -142,6 +149,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         let playlistSnap = snap.childSnapshotForPath("playlist")
         let orderSnap = snap.childSnapshotForPath("songOrder")
         let sharedSnap = snap.childSnapshotForPath("sharedWith")
+        let currentlyPlayingSnap = snap.childSnapshotForPath("nowPlaying")
         
         for child in sharedSnap.children {
             if child.value as String == StoredPlaylists.sharedInstance.userFacebookID {
@@ -151,6 +159,8 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         if stillSharingWithMe {
+            currentlyPlaying = currentlyPlayingSnap.value as! Int
+            
             for child in orderSnap.children {
                 let songName = child.value as String
                 let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")

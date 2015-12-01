@@ -148,6 +148,10 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
         tableView.reloadData()
+        
+        let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
+        let userRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID)
+        userRef.childByAppendingPath("nowPlaying").setValue(currentlyPlaying)
     }
     
     // Brings up options when user presses save at the bottom of viewing current queue
@@ -247,7 +251,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
         let userRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID)
         
-        
         var songsWithRatings = [String : [String:Int]]()
         var songOrder = [String]()
         
@@ -266,6 +269,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
         userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
+        userRef.childByAppendingPath("nowPlaying").setValue(currentlyPlaying)
         
         let myRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID).childByAppendingPath("playlist")
         
