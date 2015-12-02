@@ -293,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-8c-wlG">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -364,14 +364,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="VCY-D0-QBI">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem title="Request a Song" id="cSs-tu-Ukt">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="RequestSong:" destination="PPU-6x-nc9" id="oyB-49-FmE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.21176470589999999" green="0.52549019610000003" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CwR-8c-wlG" firstAttribute="bottom" secondItem="Cev-yR-ezX" secondAttribute="top" id="Ngd-fY-Ebq"/>
-                            <constraint firstAttribute="trailing" secondItem="CwR-8c-wlG" secondAttribute="trailing" id="bGa-xO-h2Z"/>
-                            <constraint firstItem="CwR-8c-wlG" firstAttribute="top" secondItem="MMs-FW-0pP" secondAttribute="top" id="lkV-ah-f68"/>
-                            <constraint firstItem="CwR-8c-wlG" firstAttribute="leading" secondItem="MMs-FW-0pP" secondAttribute="leading" id="xvf-kF-OxJ"/>
+                            <constraint firstItem="CwR-8c-wlG" firstAttribute="top" secondItem="MMs-FW-0pP" secondAttribute="top" id="4o5-ko-4pS"/>
+                            <constraint firstItem="CwR-8c-wlG" firstAttribute="trailing" secondItem="VCY-D0-QBI" secondAttribute="trailing" id="K5N-Qt-GyS"/>
+                            <constraint firstItem="CwR-8c-wlG" firstAttribute="leading" secondItem="MMs-FW-0pP" secondAttribute="leading" id="VVg-eO-98o"/>
+                            <constraint firstAttribute="trailing" secondItem="CwR-8c-wlG" secondAttribute="trailing" id="a4p-4d-3WM"/>
+                            <constraint firstItem="CwR-8c-wlG" firstAttribute="leading" secondItem="VCY-D0-QBI" secondAttribute="leading" id="bRn-KH-RGi"/>
+                            <constraint firstItem="CwR-8c-wlG" firstAttribute="bottom" secondItem="VCY-D0-QBI" secondAttribute="top" id="ehY-aw-Zeo"/>
+                            <constraint firstItem="VCY-D0-QBI" firstAttribute="bottom" secondItem="Cev-yR-ezX" secondAttribute="top" id="uT9-R9-Zyx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="x2X-yS-qa1"/>
@@ -406,7 +422,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0X6-cd-SPh" id="NFc-V3-euJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkP-F2-wm2">
@@ -504,14 +520,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="8Ij-8R-bBv">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="yeO-VA-L3a">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="addSong:" destination="1V2-1G-rFh" id="TT5-lW-hf8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="8Ij-8R-bBv"/>
                     <connections>
                         <outlet property="broadcastButton" destination="GPA-en-hfW" id="lov-IN-Iqa"/>
                         <outlet property="inviteButton" destination="PmR-bU-Kje" id="Fbv-4j-TQA"/>

@@ -192,6 +192,29 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.reloadData()
     }
     
+    @IBAction func RequestSong(sender: AnyObject) {
+        // Create popup window asking for playlist name
+        var alertController:UIAlertController?
+        alertController = UIAlertController(title: "Request Song", message:  nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController!.addTextFieldWithConfigurationHandler(
+            {(textField : UITextField!) in textField.placeholder = "Song Title"})
+        
+        let action = UIAlertAction(title: "Done",
+            style: UIAlertActionStyle.Default,
+            handler: {
+                (paramAction:UIAlertAction!) in
+                if let textFields = alertController?.textFields{
+                    let theTextFields = textFields as [UITextField]
+                    let enteredText = theTextFields[0].text
+                }
+        })
+        
+        alertController?.addAction(action)
+        self.presentViewController(alertController!, animated: true, completion: nil)
+        // End popup window code
+        
+    }
     /*
     // MARK: - Navigation
     

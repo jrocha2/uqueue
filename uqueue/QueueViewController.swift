@@ -310,6 +310,9 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func addSong(sender: AnyObject) {
        
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 
