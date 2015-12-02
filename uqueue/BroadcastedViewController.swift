@@ -23,7 +23,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
-    let textCellIdentifier = "textCell"
+    let textCellIdentifier = "songCell"
     let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     
     override func viewDidLoad() {
@@ -79,18 +79,18 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             
             if self.ratingHistory[songName] == nil {
                 self.ratingHistory[songName] = (1,0)
-                likeRef.setValue(currentLikeCount+1)
+                likeRef.setValue(String(currentLikeCount+1))
             } else if self.ratingHistory[songName]!.0 == 0 {
                 self.ratingHistory[songName]!.0 = 1
-                likeRef.setValue(currentLikeCount+1)
+                likeRef.setValue(String(currentLikeCount+1))
                 
                 if self.ratingHistory[songName]!.1 == 1 {
                     self.ratingHistory[songName]!.1 = 0
-                    dislikeRef.setValue(currentDislikeCount-1)
+                    dislikeRef.setValue(String(currentDislikeCount-1))
                 }
             } else {
                 self.ratingHistory[songName]!.0 = 0
-                likeRef.setValue(currentLikeCount-1)
+                likeRef.setValue(String(currentLikeCount-1))
             }
             
             return true
@@ -101,18 +101,18 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
 
             if self.ratingHistory[songName] == nil {
                 self.ratingHistory[songName] = (0,1)
-                dislikeRef.setValue(currentDislikeCount+1)
+                dislikeRef.setValue(String(currentDislikeCount+1))
             } else if self.ratingHistory[songName]!.1 == 0 {
                 self.ratingHistory[songName]!.1 = 1
-                dislikeRef.setValue(currentDislikeCount+1)
+                dislikeRef.setValue(String(currentDislikeCount+1))
                 
                 if self.ratingHistory[songName]!.0 == 1 {
                     self.ratingHistory[songName]!.0 = 0
-                    likeRef.setValue(currentLikeCount-1)
+                    likeRef.setValue(String(currentLikeCount-1))
                 }
             } else {
                 self.ratingHistory[songName]!.1 = 0;
-                dislikeRef.setValue(currentDislikeCount-1)
+                dislikeRef.setValue(String(currentDislikeCount-1))
             }
             
             
@@ -167,6 +167,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             for child in orderSnap.children {
                 let songName = child.value as String
                 let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")
+                print(likesSnap.value)
                 let likes = likesSnap.value as! String
                 let dislikesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
                 let dislikes = dislikesSnap.value as! String
