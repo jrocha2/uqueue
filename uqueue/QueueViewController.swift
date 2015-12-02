@@ -58,9 +58,13 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         if broadcastButton.title == "Broadcast"{
             inviteButton.enabled = false
             inviteButton.tintColor = UIColor.clearColor()
+            requestButton.enabled = false
+            requestButton.tintColor = UIColor.clearColor()
         } else {
             inviteButton.enabled = true
             inviteButton.tintColor = UIColor.whiteColor()
+            requestButton.enabled = false
+            requestButton.tintColor = UIColor.whiteColor()
         }
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
