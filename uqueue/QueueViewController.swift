@@ -97,6 +97,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let item = currentPlaylist!.songs[row]
         cell.titleLabel.text = item.title
+        cell.artistLabel.text = item.artist
         cell.likeLabel.text = String(songRatings[row].0)
         cell.dislikeLabel.text = String(songRatings[row].1)
         
@@ -251,11 +252,12 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
         let userRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID)
         
-        var songsWithRatings = [String : [String:Int]]()
+        var songsDetails = [String : [String:String]]()
         var songOrder = [String]()
         
         for song in currentPlaylist!.songs {
             var title = song.title!
+            let artist = song.artist
             title = title.stringByReplacingOccurrencesOfString("/", withString: "-")
             title = title.stringByReplacingOccurrencesOfString(".", withString: "")
             title = title.stringByReplacingOccurrencesOfString("#", withString: " ")
@@ -264,11 +266,11 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             title = title.stringByReplacingOccurrencesOfString("]", withString: ")")
             
             songOrder.append(title)
-            songsWithRatings[title] = ["likes" : 0, "dislikes" : 0]
+            songsDetails[title] = ["likes" : "0", "dislikes" : "0", "artist" : artist!]
         }
         
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
-        userRef.childByAppendingPath("playlist").setValue(songsWithRatings)
+        userRef.childByAppendingPath("playlist").setValue(songsDetails)
         userRef.childByAppendingPath("nowPlaying").setValue(currentlyPlaying)
         
         let myRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID).childByAppendingPath("playlist")
@@ -294,11 +296,11 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             songName = songName!.stringByReplacingOccurrencesOfString("]", withString: ")")
             
             let likesSnap = snap.childSnapshotForPath(songName).childSnapshotForPath("likes")
-            let likes = likesSnap.value as! Int
+            let likes = likesSnap.value as! String
             let dislikesSnap = snap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
-            let dislikes = dislikesSnap.value as! Int
+            let dislikes = dislikesSnap.value as! String
             
-            newRatings.append((likes,dislikes))
+            newRatings.append((Int(likes)!,Int(dislikes)!))
         }
         songRatings = newRatings
         tableView.reloadData()

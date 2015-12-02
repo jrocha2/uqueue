@@ -12,6 +12,7 @@ import MGSwipeTableCell
 class SongTableCell: MGSwipeTableCell {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dislikeLabel: UILabel!
     

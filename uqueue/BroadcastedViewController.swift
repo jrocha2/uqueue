@@ -15,6 +15,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     var friend:String!
     var friendPlaylist = [String]()
     var friendSongRatings = [(Int,Int)]()
+    var friendArtists = [String]()
     var ratingHistory = [String:(Int,Int)]()
     var currentlyPlaying:Int!
     var dislikeColor = UIColor(red: 253/255, green: 59/255, blue: 47/255, alpha: 1)
@@ -129,6 +130,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
         
         cell.rightButtons = [dislikeButton, likeButton]
         cell.titleLabel.text = songName
+        cell.artistLabel.text = friendArtists[row]
         cell.likeLabel.text = String(friendSongRatings[row].0)
         cell.dislikeLabel.text = String(friendSongRatings[row].1)
         
@@ -144,6 +146,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
     func parseFirebaseData(snap: FDataSnapshot) {
         friendPlaylist.removeAll()
         friendSongRatings.removeAll()
+        friendArtists.removeAll()
         
         var stillSharingWithMe = false
         let playlistSnap = snap.childSnapshotForPath("playlist")
@@ -164,12 +167,15 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             for child in orderSnap.children {
                 let songName = child.value as String
                 let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")
-                let likes = likesSnap.value as! Int
+                let likes = likesSnap.value as! String
                 let dislikesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
-                let dislikes = dislikesSnap.value as! Int
+                let dislikes = dislikesSnap.value as! String
+                let artistSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("artist")
+                let artist = artistSnap.value as! String
                 
                 friendPlaylist.append(songName)
-                friendSongRatings.append((likes,dislikes))
+                friendSongRatings.append((Int(likes)!,Int(dislikes)!))
+                friendArtists.append(artist)
             }
         }else{
             let alertController = UIAlertController(title: nil, message:
