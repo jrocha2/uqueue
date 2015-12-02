@@ -368,6 +368,7 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="owc-Yl-iRX"/>
                                     <barButtonItem title="Request a Song" id="cSs-tu-Ukt">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -399,6 +400,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSd-Jt-T3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2416" y="-160"/>
+        </scene>
+        <!--Requests-->
+        <scene sceneID="R7O-Ts-7e7">
+            <objects>
+                <viewController id="msj-Qu-1P6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9ql-yr-jf6"/>
+                        <viewControllerLayoutGuide type="bottom" id="lkG-5t-ERg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b6O-oj-3ij">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="30T-Vy-1lJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Requests" id="t11-bo-g7L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z4V-a6-KSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3134" y="-1622"/>
         </scene>
         <!--Title-->
         <scene sceneID="Krt-mt-u7T">
@@ -520,11 +548,18 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="8Ij-8R-bBv"/>
+                    <navigationItem key="navigationItem" title="Title" id="a20-67-b2G">
+                        <barButtonItem key="rightBarButtonItem" title="Requests" id="fds-a9-Scd">
+                            <connections>
+                                <segue destination="msj-Qu-1P6" kind="show" id="xwg-Hk-rv9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="broadcastButton" destination="GPA-en-hfW" id="lov-IN-Iqa"/>
                         <outlet property="inviteButton" destination="PmR-bU-Kje" id="Fbv-4j-TQA"/>
-                        <outlet property="navBar" destination="8Ij-8R-bBv" id="SHh-lo-e0o"/>
+                        <outlet property="navBar" destination="a20-67-b2G" id="COZ-XJ-ct5"/>
+                        <outlet property="requestButton" destination="fds-a9-Scd" id="5qq-RW-QsR"/>
                         <outlet property="tableView" destination="nQ9-6c-riD" id="Zv7-fa-Ghm"/>
                     </connections>
                 </viewController>

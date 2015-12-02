@@ -26,13 +26,17 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
+    
     var currentPlaylistTitle : String!
     
     let textCellIdentifier = "songCell"
     let myRootRef = Firebase(url: "https://uqueue.firebaseio.com")
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.title = currentPlaylistTitle
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -58,9 +62,6 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             inviteButton.enabled = true
             inviteButton.tintColor = UIColor.whiteColor()
         }
-
-        
-        navBar.title = currentPlaylistTitle
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -220,6 +221,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var broadcastButton: UIBarButtonItem!
     @IBOutlet weak var inviteButton: UIBarButtonItem!
+    @IBOutlet weak var requestButton: UIBarButtonItem!
     
     @IBAction func broadcastButtonPressed(sender: AnyObject!) {
         
@@ -228,6 +230,8 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             broadcastButton.title = "Stop Broadcasting"
             inviteButton.enabled = true
             inviteButton.tintColor = UIColor.whiteColor()
+            requestButton.enabled = true
+            requestButton.tintColor = UIColor.whiteColor()
             let alertController = UIAlertController(title: nil, message:
                 "Your playlist is now broadcasting!" , preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Yay!", style: UIAlertActionStyle.Default,handler: nil))
@@ -240,6 +244,8 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             broadcastButton.title = "Broadcast"
             inviteButton.enabled = false
             inviteButton.tintColor = UIColor.clearColor()
+            requestButton.enabled = false
+            requestButton.tintColor = UIColor.clearColor()
             let alertController2 = UIAlertController(title: nil, message:
                 "Your playlist is no longer broadcasting." , preferredStyle: UIAlertControllerStyle.Alert)
             alertController2.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))

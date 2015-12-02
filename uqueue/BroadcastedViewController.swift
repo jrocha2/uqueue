@@ -167,7 +167,6 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
             for child in orderSnap.children {
                 let songName = child.value as String
                 let likesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("likes")
-                print(likesSnap.value)
                 let likes = likesSnap.value as! String
                 let dislikesSnap = playlistSnap.childSnapshotForPath(songName).childSnapshotForPath("dislikes")
                 let dislikes = dislikesSnap.value as! String
