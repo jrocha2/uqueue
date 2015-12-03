@@ -20,4 +20,5 @@ class StoredPlaylists {
     var playlistNames = [String]()
     
     var lastPlayedPlaylist = String()
+    var isBroadcasting = false
 }

@@ -55,16 +55,18 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //self.navigationController!.toolbarHidden = false;
         
-        if broadcastButton.title == "Broadcast"{
+        if StoredPlaylists.sharedInstance.isBroadcasting {
+            broadcastButton.title = "Stop Broadcasting"
+            inviteButton.enabled = true
+            inviteButton.tintColor = UIColor.whiteColor()
+            requestButton.enabled = true
+            requestButton.tintColor = UIColor.whiteColor()
+        }else{
+            broadcastButton.title = "Broadcast"
             inviteButton.enabled = false
             inviteButton.tintColor = UIColor.clearColor()
             requestButton.enabled = false
             requestButton.tintColor = UIColor.clearColor()
-        } else {
-            inviteButton.enabled = true
-            inviteButton.tintColor = UIColor.whiteColor()
-            requestButton.enabled = false
-            requestButton.tintColor = UIColor.whiteColor()
         }
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -231,6 +233,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if broadcastButton.title == "Broadcast"{
             broadcastPlaylist(currentPlaylist!)
+            StoredPlaylists.sharedInstance.isBroadcasting = true
             broadcastButton.title = "Stop Broadcasting"
             inviteButton.enabled = true
             inviteButton.tintColor = UIColor.whiteColor()
@@ -246,6 +249,7 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
             sharedRef.removeValue()
             
             broadcastButton.title = "Broadcast"
+            StoredPlaylists.sharedInstance.isBroadcasting = false
             inviteButton.enabled = false
             inviteButton.tintColor = UIColor.clearColor()
             requestButton.enabled = false
