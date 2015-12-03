@@ -206,6 +206,18 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
                 if let textFields = alertController?.textFields{
                     let theTextFields = textFields as [UITextField]
                     let enteredText = theTextFields[0].text
+                    
+                    let requestsRef = self.myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFriendsList[self.friend]).childByAppendingPath("songRequests")
+                    var songRequests = [String]()
+                    
+                    requestsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                        for child in snapshot.children {
+                            let request = child.value as String
+                            songRequests.append(request)
+                        }
+                        songRequests.append(enteredText!)
+                        requestsRef.setValue(songRequests)
+                    })
                 }
         })
         

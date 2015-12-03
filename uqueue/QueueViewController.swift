@@ -282,6 +282,9 @@ class QueueViewController: UIViewController, UITableViewDataSource, UITableViewD
         userRef.childByAppendingPath("songOrder").setValue(songOrder)
         userRef.childByAppendingPath("playlist").setValue(songsDetails)
         userRef.childByAppendingPath("nowPlaying").setValue(currentlyPlaying)
+        var songRequests = [String]()
+        songRequests.append("Placeholder")
+        userRef.childByAppendingPath("songRequests").setValue(songRequests)
         
         let myRef = myRootRef.childByAppendingPath(StoredPlaylists.sharedInstance.userFacebookID).childByAppendingPath("playlist")
         
