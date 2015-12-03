@@ -28,13 +28,13 @@ class SongRequestViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         songRequests.removeAll()
-        songRequests.append("Placeholder")
     
         requestsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             for child in snapshot.children {
                 let request = child.value as String
                 self.songRequests.append(request)
             }
+            self.tableView.reloadData()
         })
 
     }

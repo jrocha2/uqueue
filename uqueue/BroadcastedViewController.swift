@@ -216,6 +216,7 @@ class BroadcastedViewController: UIViewController, UITableViewDataSource, UITabl
                             songRequests.append(request)
                         }
                         songRequests.append(enteredText!)
+                        print(songRequests)
                         requestsRef.setValue(songRequests)
                     })
                 }
