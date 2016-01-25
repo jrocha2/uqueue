@@ -76,7 +76,11 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         if section == 0 {
             return StoredPlaylists.sharedInstance.userPlaylists.count
         }else{
-            return friendsCurrentlySharing.count
+            if friendsCurrentlySharing.count == 0 {
+                return 1
+            }else{
+                return friendsCurrentlySharing.count
+            }
         }
     }
     
@@ -87,10 +91,14 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
         if indexPath.section == 0 {
             cell.textLabel?.text = StoredPlaylists.sharedInstance.playlistNames[row]
         } else {
-            let friendID = friendsCurrentlySharing[row]
-            for friend in StoredPlaylists.sharedInstance.userFriendsList {
-                if friend.1 == friendID {
-                    cell.textLabel?.text = friend.0
+            if friendsCurrentlySharing.count == 0 {
+                cell.textLabel?.text = "None Currently"
+            } else {
+                let friendID = friendsCurrentlySharing[row]
+                for friend in StoredPlaylists.sharedInstance.userFriendsList {
+                    if friend.1 == friendID {
+                        cell.textLabel?.text = friend.0
+                    }
                 }
             }
         }
@@ -114,8 +122,10 @@ class UserPlaylistViewController: UIViewController, UITableViewDataSource, UITab
             selectedPlaylist = cell.textLabel!.text
             performSegueWithIdentifier("selectedPlaylist", sender: nil)
         }else{
-            selectedFriend = cell.textLabel?.text
-            performSegueWithIdentifier("selectedFriend", sender: nil)
+            if friendsCurrentlySharing.count > 0 {
+                selectedFriend = cell.textLabel?.text
+                performSegueWithIdentifier("selectedFriend", sender: nil)
+            }
         }
     }
     
