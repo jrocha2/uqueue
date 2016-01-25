@@ -1,4 +1,10 @@
 # uqueue  
+##Screenshots  
+![screen1](screenshots/playlists.png)
+![screen2](screenshots/player.png)
+![screen3](screenshots/queue.png)
+![screen4](screenshots/broadcasted.png)  
+
 ##Proof of Concept
 We originally intended to use Spotify's iOS API to take care of all of the music playing aspects of this app while we focused on establishing a means of communication between the users. Unfortunately, the documentation and framework was deprecated, so we instead had to spend a majority of our time building the music player from the ground up. This included the ability to create/save custom playlists.     
   
