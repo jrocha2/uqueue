@@ -1,4 +1,7 @@
 # uqueue  
+### Created by Shawn Fotsch and John Rocha  
+  
+  
 ##Screenshots  
 ![screen1](screenshots/playlists.png)
 ![screen2](screenshots/player.png)
